@@ -1,0 +1,301 @@
+<response>
+<header>
+<resultCode>00</resultCode>
+<resultMsg>NORMAL SERVICE.</resultMsg>
+</header>
+<body>
+<items>
+<item>
+<age>2020(년생)</age>
+<careAddr>경기도 남양주시 금곡로 44 (금곡동, 성원빌딩) 1층</careAddr>
+<careNm>남양주동물보호협회</careNm>
+<careTel>031-591-7270</careTel>
+<chargeNm>류상신</chargeNm>
+<colorCd>흰색</colorCd>
+<desertionNo>441399202002234</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008072308195_s.jpg</filename>
+<happenDt>20200807</happenDt>
+<happenPlace>답내리</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>경기-남양주-2020-01237</noticeNo>
+<noticeSdt>20200807</noticeSdt>
+<officetel>031-590-2324</officetel>
+<orgNm>경기도 남양주시</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008072308195.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>어린강아지임</specialMark>
+<weight>1.1(Kg)</weight>
+</item>
+<item>
+<age>2020(년생)</age>
+<careAddr>경기도 남양주시 금곡로 44 (금곡동, 성원빌딩) 1층</careAddr>
+<careNm>남양주동물보호협회</careNm>
+<careTel>031-591-7270</careTel>
+<chargeNm>류상신</chargeNm>
+<colorCd>갈색.흰색</colorCd>
+<desertionNo>441399202002233</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008072308117_s.jpg</filename>
+<happenDt>20200807</happenDt>
+<happenPlace>답내리</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>경기-남양주-2020-01236</noticeNo>
+<noticeSdt>20200807</noticeSdt>
+<officetel>031-590-2324</officetel>
+<orgNm>경기도 남양주시</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008072308117.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>어린강아지임</specialMark>
+<weight>0.9(Kg)</weight>
+</item>
+<item>
+<age>2020(년생)</age>
+<careAddr>경기도 남양주시 금곡로 44 (금곡동, 성원빌딩) 1층</careAddr>
+<careNm>남양주동물보호협회</careNm>
+<careTel>031-591-7270</careTel>
+<chargeNm>류상신</chargeNm>
+<colorCd>황색.흰색</colorCd>
+<desertionNo>441399202002232</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008072308243_s.jpg</filename>
+<happenDt>20200807</happenDt>
+<happenPlace>답내리</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>경기-남양주-2020-01235</noticeNo>
+<noticeSdt>20200807</noticeSdt>
+<officetel>031-590-2324</officetel>
+<orgNm>경기도 남양주시</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008072308243.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>어린강아지임</specialMark>
+<weight>1.1(Kg)</weight>
+</item>
+<item>
+<age>2020(년생)</age>
+<careAddr>경기도 남양주시 금곡로 44 (금곡동, 성원빌딩) 1층</careAddr>
+<careNm>남양주동물보호협회</careNm>
+<careTel>031-591-7270</careTel>
+<chargeNm>류상신</chargeNm>
+<colorCd>황색</colorCd>
+<desertionNo>441399202002231</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008072208157[1]_s.jpg</filename>
+<happenDt>20200807</happenDt>
+<happenPlace>답내리</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>경기-남양주-2020-01234</noticeNo>
+<noticeSdt>20200807</noticeSdt>
+<officetel>031-590-2324</officetel>
+<orgNm>경기도 남양주시</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008072208157[1].jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>어린강아지임</specialMark>
+<weight>1.1(Kg)</weight>
+</item>
+<item>
+<age>2020(년생)</age>
+<careAddr>경기도 남양주시 금곡로 44 (금곡동, 성원빌딩) 1층</careAddr>
+<careNm>남양주동물보호협회</careNm>
+<careTel>031-591-7270</careTel>
+<chargeNm>류상신</chargeNm>
+<colorCd>흰색</colorCd>
+<desertionNo>441399202002230</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008072208845_s.jpg</filename>
+<happenDt>20200807</happenDt>
+<happenPlace>답내리</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>경기-남양주-2020-01233</noticeNo>
+<noticeSdt>20200807</noticeSdt>
+<officetel>031-590-2324</officetel>
+<orgNm>경기도 남양주시</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008072208845.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>어린강아지임</specialMark>
+<weight>0.8(Kg)</weight>
+</item>
+<item>
+<age>2020(년생)</age>
+<careAddr>경기도 남양주시 금곡로 44 (금곡동, 성원빌딩) 1층</careAddr>
+<careNm>남양주동물보호협회</careNm>
+<careTel>031-591-7270</careTel>
+<chargeNm>류상신</chargeNm>
+<colorCd>황색.흰색</colorCd>
+<desertionNo>441399202002229</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008072208916_s.jpg</filename>
+<happenDt>20200807</happenDt>
+<happenPlace>답내리</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>경기-남양주-2020-01232</noticeNo>
+<noticeSdt>20200807</noticeSdt>
+<officetel>031-590-2324</officetel>
+<orgNm>경기도 남양주시</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008072208916.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>어린강아지임</specialMark>
+<weight>1.0(Kg)</weight>
+</item>
+<item>
+<age>2020(년생)</age>
+<careAddr>경기도 남양주시 금곡로 44 (금곡동, 성원빌딩) 1층</careAddr>
+<careNm>남양주동물보호협회</careNm>
+<careTel>031-591-7270</careTel>
+<chargeNm>류상신</chargeNm>
+<colorCd>황색.검정</colorCd>
+<desertionNo>441399202002228</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008072208384_s.jpg</filename>
+<happenDt>20200807</happenDt>
+<happenPlace>답내리</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>경기-남양주-2020-01231</noticeNo>
+<noticeSdt>20200807</noticeSdt>
+<officetel>031-590-2324</officetel>
+<orgNm>경기도 남양주시</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008072208384.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>어린강아지임</specialMark>
+<weight>1.0(Kg)</weight>
+</item>
+<item>
+<age>2013(년생)</age>
+<careAddr>경기도 남양주시 금곡로 44 (금곡동, 성원빌딩) 1층</careAddr>
+<careNm>남양주동물보호협회</careNm>
+<careTel>031-591-7270</careTel>
+<chargeNm>류상신</chargeNm>
+<colorCd>검정.황색</colorCd>
+<desertionNo>441399202002227</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008072208266_s.jpg</filename>
+<happenDt>20200807</happenDt>
+<happenPlace>배양리</happenPlace>
+<kindCd>[개] 셰퍼드</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>경기-남양주-2020-01230</noticeNo>
+<noticeSdt>20200807</noticeSdt>
+<officetel>031-590-2324</officetel>
+<orgNm>경기도 남양주시</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008072208266.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>초록색 와이어줄.황토색 목줄착용.온순함</specialMark>
+<weight>20(Kg)</weight>
+</item>
+<item>
+<age>2019(년생)</age>
+<careAddr>경기도 남양주시 금곡로 44 (금곡동, 성원빌딩) 1층</careAddr>
+<careNm>남양주동물보호협회</careNm>
+<careTel>031-591-7270</careTel>
+<chargeNm>류상신</chargeNm>
+<colorCd>갈색</colorCd>
+<desertionNo>441399202002225</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008072208428_s.jpg</filename>
+<happenDt>20200807</happenDt>
+<happenPlace>창현리</happenPlace>
+<kindCd>[개] 푸들</kindCd>
+<neuterYn>Y</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>경기-남양주-2020-01228</noticeNo>
+<noticeSdt>20200807</noticeSdt>
+<officetel>031-590-2324</officetel>
+<orgNm>경기도 남양주시</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008072208428.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>목줄없고 조용함</specialMark>
+<weight>4.9(Kg)</weight>
+</item>
+<item>
+<age>2019(년생)</age>
+<careAddr>경기도 남양주시 금곡로 44 (금곡동, 성원빌딩) 1층</careAddr>
+<careNm>남양주동물보호협회</careNm>
+<careTel>031-591-7270</careTel>
+<chargeNm>류상신</chargeNm>
+<colorCd>흰색.황색</colorCd>
+<desertionNo>441399202002224</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/20200807220881_s.jpg</filename>
+<happenDt>20200807</happenDt>
+<happenPlace>별내동</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>경기-남양주-2020-01227</noticeNo>
+<noticeSdt>20200807</noticeSdt>
+<officetel>031-590-2324</officetel>
+<orgNm>경기도 남양주시</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/20200807220881.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>식당뒤에 묶어놓고감.쇠줄달린 황토색 목줄착용.매우사나움</specialMark>
+<weight>7.3(Kg)</weight>
+</item>
+<item>
+<age>2019(년생)</age>
+<careAddr>경기도 남양주시 금곡로 44 (금곡동, 성원빌딩) 1층</careAddr>
+<careNm>남양주동물보호협회</careNm>
+<careTel>031-591-7270</careTel>
+<chargeNm>류상신</chargeNm>
+<colorCd>크림색</colorCd>
+<desertionNo>441399202002220</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/20200806200878_s.jpg</filename>
+<happenDt>20200806</happenDt>
+<happenPlace>금곡리</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>경기-남양주-2020-01223</noticeNo>
+<noticeSdt>20200806</noticeSdt>
+<officetel>031-590-2324</officetel>
+<orgNm>경기도 남양주시</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/20200806200878.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>목줄없고 온순함</specialMark>
+<weight>3.7(Kg)</weight>
+</item>
+<item>
+<age>2012(년생)</age>
+<careAddr>경기도 남양주시 금곡로 44 (금곡동, 성원빌딩) 1층</careAddr>
+<careNm>남양주동물보호협회</careNm>
+<careTel>031-591-7270</careTel>
+<chargeNm>류상신</chargeNm>
+<colorCd>검정.살구색</colorCd>
+<desertionNo>441399202002217</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008052008207_s.jpg</filename>
+<happenDt>20200805</happenDt>
+<happenPlace>청학리</happenPlace>
+<kindCd>[개] 미니어쳐 핀셔</kindCd>
+<neuterYn>Y</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>경기-남양주-2020-01220</noticeNo>
+<noticeSdt>20200805</noticeSdt>
+<officetel>031-590-2324</officetel>
+<orgNm>경기도 남양주시</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008052008207.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>목줄없고 온순함</specialMark>
+<weight>4.8(Kg)</weight>
+</item>
+</items>
+<numOfRows>12</numOfRows>
+<pageNo>1</pageNo>
+<totalCount>81</totalCount>
+</body>
+</response>

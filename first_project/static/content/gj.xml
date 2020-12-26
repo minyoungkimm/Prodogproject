@@ -1,0 +1,253 @@
+<response>
+<header>
+<resultCode>00</resultCode>
+<resultMsg>NORMAL SERVICE.</resultMsg>
+</header>
+<body>
+<items>
+<item>
+<age>2017(년생)</age>
+<careAddr>광주광역시 북구 본촌마을길 25 (본촌동, 건국동사무소) 광주 동물보호소</careAddr>
+<careNm>광주 동물보호소</careNm>
+<careTel>062-571-2808</careTel>
+<chargeNm>북구</chargeNm>
+<colorCd>흰</colorCd>
+<desertionNo>429362202000803</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008031708877_s.jpg</filename>
+<happenDt>20200803</happenDt>
+<happenPlace>북구 두암119</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200813</noticeEdt>
+<noticeNo>광주-북구-2020-00700</noticeNo>
+<noticeSdt>20200803</noticeSdt>
+<officetel>062-410-6557</officetel>
+<orgNm>광주광역시 북구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008031708877.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>20-1140 바크, 경계</specialMark>
+<weight>12(Kg)</weight>
+</item>
+<item>
+<age>2007(년생)</age>
+<careAddr>광주광역시 북구 본촌마을길 25 (본촌동, 건국동사무소) 광주 동물보호소</careAddr>
+<careNm>광주 동물보호소</careNm>
+<careTel>062-571-2808</careTel>
+<chargeNm>북구</chargeNm>
+<colorCd>갈</colorCd>
+<desertionNo>429362202000782</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007301807435_s.jpg</filename>
+<happenDt>20200730</happenDt>
+<happenPlace>북구 일곡동</happenPlace>
+<kindCd>[개] 푸들</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200810</noticeEdt>
+<noticeNo>광주-북구-2020-00679</noticeNo>
+<noticeSdt>20200730</noticeSdt>
+<officetel>062-410-6557</officetel>
+<orgNm>광주광역시 북구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007301807435.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>20-1109 푸조</specialMark>
+<weight>2.5(Kg)</weight>
+</item>
+<item>
+<age>2015(년생)</age>
+<careAddr>광주광역시 북구 본촌마을길 25 (본촌동, 건국동사무소) 광주 동물보호소</careAddr>
+<careNm>광주 동물보호소</careNm>
+<careTel>062-571-2808</careTel>
+<chargeNm>북구</chargeNm>
+<colorCd>흰,검</colorCd>
+<desertionNo>429362202000773</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007291707807_s.jpg</filename>
+<happenDt>20200729</happenDt>
+<happenPlace>븍그 용전동</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200810</noticeEdt>
+<noticeNo>광주-북구-2020-00670</noticeNo>
+<noticeSdt>20200729</noticeSdt>
+<officetel>062-410-6557</officetel>
+<orgNm>광주광역시 북구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007291707807.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>20-1104 바키</specialMark>
+<weight>7(Kg)</weight>
+</item>
+<item>
+<age>2018(년생)</age>
+<careAddr>광주광역시 북구 본촌마을길 25 (본촌동, 건국동사무소) 광주 동물보호소</careAddr>
+<careNm>광주 동물보호소</careNm>
+<careTel>062-571-2808</careTel>
+<chargeNm>북구</chargeNm>
+<colorCd>갈</colorCd>
+<desertionNo>429362202000772</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007291707756_s.jpg</filename>
+<happenDt>20200729</happenDt>
+<happenPlace>북구 오치동</happenPlace>
+<kindCd>[개] 푸들</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200810</noticeEdt>
+<noticeNo>광주-북구-2020-00669</noticeNo>
+<noticeSdt>20200729</noticeSdt>
+<officetel>062-410-6557</officetel>
+<orgNm>광주광역시 북구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007291707756.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>20-1103 레푸, 빨간목줄 착용</specialMark>
+<weight>4(Kg)</weight>
+</item>
+<item>
+<age>2012(년생)</age>
+<careAddr>광주광역시 북구 본촌마을길 25 (본촌동, 건국동사무소) 광주 동물보호소</careAddr>
+<careNm>광주 동물보호소</careNm>
+<careTel>062-571-2808</careTel>
+<chargeNm>북구</chargeNm>
+<colorCd>흰</colorCd>
+<desertionNo>429362202000770</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007281807717_s.jpg</filename>
+<happenDt>20200728</happenDt>
+<happenPlace>북구 신안동</happenPlace>
+<kindCd>[개] 말티즈</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200807</noticeEdt>
+<noticeNo>광주-북구-2020-00667</noticeNo>
+<noticeSdt>20200728</noticeSdt>
+<officetel>062-410-6557</officetel>
+<orgNm>광주광역시 북구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007281807717.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>20-1089 북말, 신경이상증세</specialMark>
+<weight>3(Kg)</weight>
+</item>
+<item>
+<age>2020(년생)</age>
+<careAddr>광주광역시 북구 본촌마을길 25 (본촌동, 건국동사무소) 광주 동물보호소</careAddr>
+<careNm>광주 동물보호소</careNm>
+<careTel>062-571-2808</careTel>
+<chargeNm>북구</chargeNm>
+<colorCd>흰, 갈</colorCd>
+<desertionNo>429362202000764</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007261907878_s.jpg</filename>
+<happenDt>20200726</happenDt>
+<happenPlace>북구 두암112</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200805</noticeEdt>
+<noticeNo>광주-북구-2020-00661</noticeNo>
+<noticeSdt>20200726</noticeSdt>
+<officetel>062-410-6557</officetel>
+<orgNm>광주광역시 북구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007261907878.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>20-1081 바우</specialMark>
+<weight>2.3(Kg)</weight>
+</item>
+<item>
+<age>2020(년생)</age>
+<careAddr>광주광역시 북구 본촌마을길 25 (본촌동, 건국동사무소) 광주 동물보호소</careAddr>
+<careNm>광주 동물보호소</careNm>
+<careTel>062-571-2808</careTel>
+<chargeNm>북구</chargeNm>
+<colorCd>갈,검</colorCd>
+<desertionNo>429362202000754</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007231807612_s.jpg</filename>
+<happenDt>20200723</happenDt>
+<happenPlace>북구 삼각동</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200803</noticeEdt>
+<noticeNo>광주-북구-2020-00651</noticeNo>
+<noticeSdt>20200723</noticeSdt>
+<officetel>062-410-6557</officetel>
+<orgNm>광주광역시 북구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007231807612.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>20-1067 쫄댕, 목줄착용(파랑), 약간경계</specialMark>
+<weight>9(Kg)</weight>
+</item>
+<item>
+<age>2018(년생)</age>
+<careAddr>광주광역시 북구 본촌마을길 25 (본촌동, 건국동사무소) 광주 동물보호소</careAddr>
+<careNm>광주 동물보호소</careNm>
+<careTel>062-571-2808</careTel>
+<chargeNm>북구</chargeNm>
+<colorCd>갈,흰</colorCd>
+<desertionNo>429362202000752</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007231707619_s.jpg</filename>
+<happenDt>20200723</happenDt>
+<happenPlace>북구 본촌동</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200803</noticeEdt>
+<noticeNo>광주-북구-2020-00649</noticeNo>
+<noticeSdt>20200723</noticeSdt>
+<officetel>062-410-6557</officetel>
+<orgNm>광주광역시 북구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007231707619.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>20-1065 와바</specialMark>
+<weight>8(Kg)</weight>
+</item>
+<item>
+<age>2018(년생)</age>
+<careAddr>광주광역시 북구 본촌마을길 25 (본촌동, 건국동사무소) 광주 동물보호소</careAddr>
+<careNm>광주 동물보호소</careNm>
+<careTel>062-571-2808</careTel>
+<chargeNm>북구</chargeNm>
+<colorCd>갈,흰</colorCd>
+<desertionNo>429362202000751</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007231707119_s.jpg</filename>
+<happenDt>20200723</happenDt>
+<happenPlace>북구 오룡동</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200803</noticeEdt>
+<noticeNo>광주-북구-2020-00648</noticeNo>
+<noticeSdt>20200723</noticeSdt>
+<officetel>062-410-6557</officetel>
+<orgNm>광주광역시 북구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007231707119.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>20-1064 델리, 목줄착용(빨강)</specialMark>
+<weight>6(Kg)</weight>
+</item>
+<item>
+<age>2017(년생)</age>
+<careAddr>광주광역시 북구 본촌마을길 25 (본촌동, 건국동사무소) 광주 동물보호소</careAddr>
+<careNm>광주 동물보호소</careNm>
+<careTel>062-571-2808</careTel>
+<chargeNm>북구</chargeNm>
+<colorCd>흰,검</colorCd>
+<desertionNo>429362202000743</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007201707373_s.jpg</filename>
+<happenDt>20200720</happenDt>
+<happenPlace>북구 임동119</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>N</neuterYn>
+<noticeEdt>20200730</noticeEdt>
+<noticeNo>광주-북구-2020-00640</noticeNo>
+<noticeSdt>20200720</noticeSdt>
+<officetel>062-410-6557</officetel>
+<orgNm>광주광역시 북구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007201707373.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>20-1043</specialMark>
+<weight>7.3(Kg)</weight>
+</item>
+</items>
+<numOfRows>13</numOfRows>
+<pageNo>1</pageNo>
+<totalCount>10</totalCount>
+</body>
+</response>

@@ -1,0 +1,325 @@
+<response>
+<header>
+<resultCode>00</resultCode>
+<resultMsg>NORMAL SERVICE.</resultMsg>
+</header>
+<body>
+<items>
+<item>
+<age>2014(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>흰색</colorCd>
+<desertionNo>426329202000631</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008071008915_s.jpg</filename>
+<happenDt>20200807</happenDt>
+<happenPlace>부산진구 황령산 레포츠공원 부근</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>부산-부산진-2020-00393</noticeNo>
+<noticeSdt>20200807</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008071008915.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>6살 추정, 들개포획(방견)</specialMark>
+<weight>8(Kg)</weight>
+</item>
+<item>
+<age>2014(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>흰색</colorCd>
+<desertionNo>426329202000626</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008050908804_s.jpg</filename>
+<happenDt>20200805</happenDt>
+<happenPlace>부산진구 진남로 304번가길 22-3</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>부산-부산진-2020-00388</noticeNo>
+<noticeSdt>20200805</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008050908804.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>들개포획(방견)</specialMark>
+<weight>15(Kg)</weight>
+</item>
+<item>
+<age>2012(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>연갈</colorCd>
+<desertionNo>426329202000624</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008050908980_s.jpg</filename>
+<happenDt>20200805</happenDt>
+<happenPlace>부산진구 시민공원 주차장</happenPlace>
+<kindCd>[개] 푸들</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200818</noticeEdt>
+<noticeNo>부산-부산진-2020-00390</noticeNo>
+<noticeSdt>20200805</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008050908980.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>탈모, 허약, 탈진</specialMark>
+<weight>3(Kg)</weight>
+</item>
+<item>
+<age>2012(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>갈검</colorCd>
+<desertionNo>426329202000619</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008041008809_s.jpg</filename>
+<happenDt>20200804</happenDt>
+<happenPlace>부산진구 진남로 204번가길 22-3</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200814</noticeEdt>
+<noticeNo>부산-부산진-2020-00387</noticeNo>
+<noticeSdt>20200804</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008041008809.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>Q</sexCd>
+<specialMark>8살 추정, 들개(방견)</specialMark>
+<weight>10(Kg)</weight>
+</item>
+<item>
+<age>2014(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>연회</colorCd>
+<desertionNo>426329202000618</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008031308749_s.jpg</filename>
+<happenDt>20200803</happenDt>
+<happenPlace>부산진구 양정 하이몬스 공원부근</happenPlace>
+<kindCd>[개] 말라뮤트</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200813</noticeEdt>
+<noticeNo>부산-부산진-2020-00376</noticeNo>
+<noticeSdt>20200803</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008031308749.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>6살 추정</specialMark>
+<weight>25(Kg)</weight>
+</item>
+<item>
+<age>2012(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>연갈</colorCd>
+<desertionNo>426329202000616</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008031308690[1]_s.jpg</filename>
+<happenDt>20200803</happenDt>
+<happenPlace>부산진구 진남로 304번가길 22-3</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200813</noticeEdt>
+<noticeNo>부산-부산진-2020-00378</noticeNo>
+<noticeSdt>20200803</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008031308690[1].jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>방견</specialMark>
+<weight>12(Kg)</weight>
+</item>
+<item>
+<age>2010(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>흰색</colorCd>
+<desertionNo>426329202000615</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008031308611_s.jpg</filename>
+<happenDt>20200803</happenDt>
+<happenPlace>부산진구 진남로 304번가길 22-3</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200813</noticeEdt>
+<noticeNo>부산-부산진-2020-00379</noticeNo>
+<noticeSdt>20200803</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008031308611.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>방견</specialMark>
+<weight>15(Kg)</weight>
+</item>
+<item>
+<age>2011(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>흰색</colorCd>
+<desertionNo>426329202000614</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202008031308406_s.jpg</filename>
+<happenDt>20200803</happenDt>
+<happenPlace>부산진구 동평로 405번길 123</happenPlace>
+<kindCd>[개] 포메라니안</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200813</noticeEdt>
+<noticeNo>부산-부산진-2020-00380</noticeNo>
+<noticeSdt>20200803</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202008031308406.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>야간구조</specialMark>
+<weight>5(Kg)</weight>
+</item>
+<item>
+<age>2016(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>흰색</colorCd>
+<desertionNo>426329202000611</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007310907800_s.jpg</filename>
+<happenDt>20200731</happenDt>
+<happenPlace>부산진구 부전로 181</happenPlace>
+<kindCd>[개] 포메라니안</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200810</noticeEdt>
+<noticeNo>부산-부산진-2020-00372</noticeNo>
+<noticeSdt>20200731</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007310907800.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>4살 추정, 야간 구조</specialMark>
+<weight>4(Kg)</weight>
+</item>
+<item>
+<age>2010(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>흰갈</colorCd>
+<desertionNo>426329202000603</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007291607294_s[1].jpg</filename>
+<happenDt>20200729</happenDt>
+<happenPlace>부산진구 가야공원</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200810</noticeEdt>
+<noticeNo>부산-부산진-2020-00362</noticeNo>
+<noticeSdt>20200729</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007291607294.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>10살 추정, 방견, 포획</specialMark>
+<weight>10(Kg)</weight>
+</item>
+<item>
+<age>2013(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>갈색</colorCd>
+<desertionNo>426329202000602</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007291607229_s.jpg</filename>
+<happenDt>20200729</happenDt>
+<happenPlace>부산진구 가야공원</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200810</noticeEdt>
+<noticeNo>부산-부산진-2020-00363</noticeNo>
+<noticeSdt>20200729</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007291607229.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>M</sexCd>
+<specialMark>7살 추정, 방견, 포획</specialMark>
+<weight>8(Kg)</weight>
+</item>
+<item>
+<age>2012(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>흰색</colorCd>
+<desertionNo>426329202000601</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007291607504_s.jpg</filename>
+<happenDt>20200729</happenDt>
+<happenPlace>부산진구 가야공원</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200810</noticeEdt>
+<noticeNo>부산-부산진-2020-00364</noticeNo>
+<noticeSdt>20200729</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007291607504.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>8살 추정, 방견, 포획</specialMark>
+<weight>10(Kg)</weight>
+</item>
+<item>
+<age>2012(년생)</age>
+<careAddr>부산광역시 강서구 가락대로1283번길 25-2 (봉림동) </careAddr>
+<careNm>동물보호관리협회</careNm>
+<careTel>051-971-6208</careTel>
+<chargeNm>부산진구청</chargeNm>
+<colorCd>흰색</colorCd>
+<desertionNo>426329202000598</desertionNo>
+<filename>http://www.animal.go.kr/files/shelter/2020/07/202007291607888_s.jpg</filename>
+<happenDt>20200729</happenDt>
+<happenPlace>부산진구 가야공원</happenPlace>
+<kindCd>[개] 믹스견</kindCd>
+<neuterYn>U</neuterYn>
+<noticeEdt>20200810</noticeEdt>
+<noticeNo>부산-부산진-2020-00367</noticeNo>
+<noticeSdt>20200729</noticeSdt>
+<officetel>051-605-4474</officetel>
+<orgNm>부산광역시 부산진구</orgNm>
+<popfile>http://www.animal.go.kr/files/shelter/2020/07/202007291607888.jpg</popfile>
+<processState>보호중</processState>
+<sexCd>F</sexCd>
+<specialMark>8살 추정, 방견, 포획</specialMark>
+<weight>15(Kg)</weight>
+</item>
+</items>
+<numOfRows>13</numOfRows>
+<pageNo>1</pageNo>
+<totalCount>14</totalCount>
+</body>
+</response>

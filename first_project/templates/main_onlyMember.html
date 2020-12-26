@@ -1,0 +1,793 @@
+{% load static %}
+{% comment %}
+	 http://localhost:8000/first_project/main/
+{% endcomment %}
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>PRODOG</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<link rel="stylesheet" href="{% static 'css/flexslider.css' %}">
+	<link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>-->
+<!--  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Sunflower:wght@300&display=swap');
+		body {
+            font-family: 'Sunflower', sans-serif; /* google web font*/
+            font-size:16px;
+         }
+        .site-hero{
+        	font-family: 'East Sea Dokdo', cursive;
+        }
+        .table_category{
+        	font-weight:lighter;
+        	font-size:1.2em;
+        }
+        #login_div{
+        	float:right;
+        }
+        #logout_btn:hover{
+        	color:#bac964;
+        	border: 0;
+        }
+		.search_table {
+			width:75%;
+			height:50%;
+			margin-left : auto;
+			margin-right : auto;
+		}
+		.search:hover{
+			background-color : gray;
+		}
+		.search_table_td{
+			border-bottom : 1px dotted gray;
+		}
+		.modal {
+            //overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+        }
+        /* Modal Content/Box */
+        .modal-content {
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+        }
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            font-size: 35px;
+            text-align:right;
+            margin-right:10px;
+            margin-top:5px;
+        }
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+	</style>
+</head>
+<body data-spy="scroll" data-target="#pb-navbar" data-offset="200" id="body_id">
+
+	<nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar" style="width: 100%;">
+		<div class="container">
+			<img src="{% static 'images/logo_2.png' %}" style="float:left; height:60px; cursor:hand;" onclick="location.href='http://localhost:8000/first_project/main_onlyMember/'">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-registration">신고하기</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-search">조회하기</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-portfolio">유기견 소개</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-map">가까운 병원찾기</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-coment">안내사항</a></li>
+				</ul>
+				<button type="button" id="logout_btn" style="float:right; height:30px; border: 0; cursor:hand;" onclick="location.href='http://localhost:8000/first_project/main/'">로그아웃</button>
+			</div>
+		</div>
+	</nav>
+
+	<section class="site-hero" style="background-image: url({% static 'images/main_dog.jpg' %});" id="section-home" data-stellar-background-ratio="0.5">
+		<div class="container">
+			<div class="row intro-text align-items-center justify-content-center">
+				<div class="col-md-10 text-center pt-5">
+					<h1 class="site-heading site-animate">발견하셨다면 주저말고
+						<strong class="d-block"><span style="color:red">'신고'</span></strong>해주세요</h1>
+					<strong class="d-block text-white text-uppercase letter-spacing">please save the endangered animals.</strong>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="site-section" id="section-registration" style="margin-top:100px;">
+		<div class="container">
+			<div class="row">
+				<div class="section-heading text-center col-md-12">
+					<h2>신고하기</h2>
+				</div>
+				<form method="POST" action="{% url 'register' %}" class="site-form" enctype="multipart/form-data">
+					{% csrf_token %}
+<!--						<h3 class="mb-5">신고하기</h3>-->
+					<div id="table_div" style="float:left; width:600px; height:600px;">
+						<table style="border-collapse: separate; border-spacing: 0 10px; font-weight:lighter; width:500px; height:500px;">
+							<tr>
+								<th class="table_category">분류</th>
+								<td>
+									<input type="text" placeholder="견종을 입력하세요." name="type" required/>
+								</td>
+							</tr>
+							<tr>
+								<th class="table_category">색상</th>
+								<td><input type="text" placeholder="색을 입력하세요." name="color" required/></td>
+							</tr>
+							<tr>
+								<th class="table_category">접수일시</th>
+								<td><input type="date" name="datetime" required/></td>
+							</tr>
+							<tr>
+								<th class="table_category">성별</th>
+								<td>
+									<input type="radio" name="gender" value="남" required/>  남
+									<input type="radio" name="gender" value="여" required/>  여
+									<input type="radio" name="gender" value="확인불가" required/>  확인불가
+								</td>
+							</tr>
+							<tr>
+								<th class="table_category">특징</th>
+								<td><input type="text" placeholder="이름표, 성격, 생김새 등" name="feature" required/></td>
+							</tr>
+							<tr>
+								<th class="table_category">신고자 전화번호</th>
+								<td><input type="tel" placeholder="전화번호를 입력하세요." name="phone" required/></td>
+							</tr>
+							<tr>
+								<th class="table_category">발생장소</th>
+								<td><input type="text" placeholder="장소를 입력하세요." name="place" required/></td>
+							</tr>
+							<tr>
+								<th class="table_category">공고기한</th>
+								<td style="color:orange;">신고일자로부터 15일간 공고됨</td>
+							</tr>
+						</table>
+						<div class="lost-content-info-text">
+							<span style="color:red">*유기동물 문의는 보호센터에 연락하시길 바랍니다.</span>
+						</div>
+					</div>
+						<div style="float:right; width:410px; height:450px;" onchange="setThumbnail(event);">
+							<input type="file" name="photo" accept="image/*" >
+							<div class="image_div" id='image_container' style="width:400px; height:400px;">
+								<script>
+									function setThumbnail(event) {
+										var reader = new FileReader();
+											reader.onload = function(event) {
+													var img = document.createElement("img");
+													img.setAttribute("src", event.target.result);
+													img.setAttribute("width", "350px");
+													img.setAttribute("height", "350px");
+													document.querySelector("div#image_container").appendChild(img);
+											};
+													reader.readAsDataURL(event.target.files[0]);
+									}
+									</script>
+							</div>
+							<input type="submit" class="reg" value="제출" style="float:right;">
+							{% if messages %}
+								{% for message in messages %}
+									{% if message.tags %}
+										<script>
+											alert("{{ message }}")
+										</script>
+									{% endif %}
+								{% endfor %}
+							{% endif %}
+						</div>
+					</form>
+			</div>
+		</div>
+	</section>
+
+	<section class="site-section" id="section-search">
+		<div class="container2" style="">
+			<div class="section-heading text-center">
+				<h2>조회 하기</h2>
+			</div>
+			<table class="search_table" style="text-align:center; color:white;">
+				<tr class="search_T" style="background-color:black; height:50px;">
+					<th width="5%">분류</th>
+					<th width="5%">색상</th>
+					<th width="15%">접수일시</th>
+					<th width="10%">성별</th>
+					<th width="15%">특징</th>
+					<th width="15%">발생장소</th>
+					<th width="15%">신고자 전화번호</th>
+					<th width="10%">사진</th>
+				</tr>
+				{% for context in context_list %}
+				<tr class="search">
+<!--								<td width="7%">{{ news_data.pk }}</td>-->
+<!--								<td width="50%" id="title_click" onclick="ajax_uu_request({{ news_data.pk }})">{{ news_data.title }}</td>-->
+					<td class="search_table_td">{{ context.type }}</td>
+					<td class="search_table_td">{{ context.color }}</td>
+					<td class="search_table_td">{{ context.datetime | date:'Y-m-d' }}</td>
+					<td class="search_table_td">{{ context.gender }}</td>
+					<td class="search_table_td">{{ context.feature }}</td>
+					<td class="search_table_td">{{ context.place }}</td>
+					<td class="search_table_td">{{ context.phone }}</td>
+					<td class="search_table_td"><img src="{{context.photo.url}}" width="100" height="100" /></td>
+<!--								<td>{{ news_data.cnt }}</td>-->
+				</tr>
+				{% endfor %}
+			</table>
+			<h5 style="text-align:center; margin-top:25px;">
+				{% if context_list.has_previous %}
+					<a href="?page={{context_list.number|add:-1}}#section-search" style="color:white;">이전페이지</a>
+				{% endif %}
+				Page {{ context_list.number }} / {{ context_list.paginator.num_pages }}
+				{% if context_list.has_next %}
+					<a href="?page={{context_list.number|add:+1}}#section-search" style="color:white;">다음페이지</a>
+				{% endif %}
+			</h5>
+		</div>
+	</section>
+
+	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<section class="site-section" id="section-portfolio" style="margin-top:100px;">
+		<div class="container">
+			<div class="row">
+				<div class="section-heading text-center col-md-12">
+					<h2>유기견 소개</h2>
+					<h5 style="color:orange;">사진을 눌러 상세 정보를 확인하세요</h5>
+				</div>
+			</div>
+			<div class="filters">
+				<ul>
+					<li data-filter=".bs123" onclick="bs_show_card();" id="bs_show">동물보호관리협회</li>
+					<li data-filter=".gj123" onclick="gj_show_card();" id="gj_show">광주동물보호소</li>
+					<li data-filter=".ny123" onclick="ny_show_card();" id="ny_show">남양주동물보호협회</li>
+					<li data-filter=".yy123" onclick="yy_show_card();" id="yy_show">양양군유기동물보호소</li>
+				</ul>
+			</div>
+
+			<div class="filters-content" id="filter_area">
+				<script>
+					function bs_show_card(){
+						var con1 = document.getElementById("img1");
+						if(con1.style.display=='none'){
+							con1.style.display = 'block';
+							document.getElementById("img2").style.display='none';
+							document.getElementById("img3").style.display='none';
+							document.getElementById("img4").style.display='none';
+						}
+					}
+					function gj_show_card(){
+						var con2 = document.getElementById("img2");
+						if(con2.style.display=='none'){
+							con2.style.display = 'block';
+							var con1 = document.getElementById("img1");
+							document.getElementById("img1").style.display='none';
+							document.getElementById("img3").style.display='none';
+							document.getElementById("img4").style.display='none';
+						}
+					}
+					function ny_show_card(){
+						var con3 = document.getElementById("img3");
+						if(con3.style.display=='none'){
+							con3.style.display = 'block';
+							document.getElementById("img1").style.display='none';
+							document.getElementById("img2").style.display='none';
+							document.getElementById("img4").style.display='none';
+						}
+					}
+					function yy_show_card(){
+						var con4 = document.getElementById("img4");
+						if(con4.style.display=='none'){
+							con4.style.display = 'block';
+							document.getElementById("img1").style.display='none';
+							document.getElementById("img2").style.display='none';
+							document.getElementById("img3").style.display='none';
+						}
+					}
+
+				</script>
+				<div id="row_123" class="row grid">
+					<div class="single-portfolio all bs123" style="margin:0;">
+						<div class="relative">
+							<div class="thumb">
+								<div class="img_1" style="display:none;" id="img1">
+								<script>
+									const dom = $('.img_1');
+									let content = "";
+									  let aa = $.ajax("{% static 'content/bs.xml' %}")
+										.done(function(data){
+											var num = 1;
+											$(data).find('item').each(function(){
+											  var picture = $(this).find('popfile').text();
+											  var type = $(this).find('kindCd').text();
+											  var age = $(this).find('age').text();
+											  var weight = $(this).find('weight').text();
+											  var shelter = $(this).find('careNm').text();
+											  var tel = $(this).find('careTel').text();
+											  var notice = $(this).find('noticeNo').text();
+											  var place = $(this).find('happenPlace').text();
+
+
+
+											  content += "<div class='card' style='width:200px; height:300px; background-color:transparent; float:left; margin:10px;'><p style='margin:0%;' id='myBtn" + num + "'><img style='width:200px; height:150px;' onclick=modal_b(" + num + ") class='card-img-top' src='"+picture+"' alt='Card image' width='50'>"+
+												"<div class='card-body'><div class='card-title' style='font-weight:bold'>"+ shelter.toLocaleString() +
+												"</div><div>"+ type.toLocaleString() +
+												"</div><div>"+ age.toLocaleString() +
+												"</div><div>"+ weight.toLocaleString() +
+												"</div>"+
+												"</div></p></div>" +
+												"<div id='myModal" + num + "' class='modal'><div class='modal-content' style='width:500px; height:auto; margin:0 auto; top:30%; margin-top:-150px;'>" +
+												"<span onclick=modal_n(" + num + ") class='close'>&times;</span>" +
+												"<h3 style='color:black;'>상세보기</h3>" +
+												"<div style='text-align:center;margin-bottom:5px;'><img style='width:80%; margin-bottom:15px;' src='"+picture+"'></div>" +
+												"<div style='color:black'>보호시설 : " + shelter.toLocaleString() +
+												"</div><div style='color:black'>전화번호 : "+ tel.toLocaleString() +
+												"</div><div style='color:black'>등록번호 : "+ notice.toLocaleString() +
+												"</div><div style='color:black'>발견장소 : "+ place.toLocaleString() +
+												"</div><div style='color:black'>견종 : "+ type.toLocaleString() +
+												"</div><div style='color:black'>나이 : "+ age.toLocaleString() +
+												"</div><div style='color:black; margin-bottom:30px;'>무게 : "+ weight.toLocaleString() +
+												"</div></div></div>"
+
+												num += 1;
+
+											  	});
+											  $(".img_1").append(content);
+											  });
+
+								</script>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<script>
+						function modal_b(i) {
+							//var opp = document.getElementById('myModali');
+							//opp.style.display = "block";
+							$('#myModal' + i).css('display','block');
+							};
+						function modal_n(i) {
+							//var oppp = document.getElementById('myModali');
+							//oppp.style.display = "none";
+							$('#myModal' + i).css('display','none');
+							};
+
+						for(i=1;i<14;i++){
+						window.onclick = function(event) {
+							if (event.target == '#myModal'+i) {
+								$('#myModal' + i).css('display','none');
+							};
+							};
+							};
+
+
+					</script>
+					<div class="single-portfolio all gj123" style="margin:0;">
+						<div class="relative">
+							<div class="thumb">
+								<div class="img_2" style="display:none;" id="img2">
+								<script>
+									const dom2 = $('.img_2');
+									let content2 = "";
+									  let aa2 = $.ajax("{% static 'content/gj.xml' %}")
+										.done(function(data){
+											var num2 = 1;
+											$(data).find('item').each(function(){
+											  var picture = $(this).find('popfile').text();
+											  var type = $(this).find('kindCd').text();
+											  var age = $(this).find('age').text();
+											  var weight = $(this).find('weight').text();
+											  var shelter = $(this).find('careNm').text();
+											  var tel = $(this).find('careTel').text();
+											  var notice = $(this).find('noticeNo').text();
+											  var place = $(this).find('happenPlace').text();
+
+
+
+											  content2 += "<div class='card' style='width:200px; height:300px; background-color:transparent; float:left; margin:10px;'><p style='margin:0%;' id='myBtn2" + num2 + "'><img style='width:200px; height:150px;' onclick=modal_b2(" + num2 + ") class='card-img-top' src='"+picture+"' alt='Card image' width='50'>"+
+												"<div class='card-body'><div class='card-title' style='font-weight:bold'>"+ shelter.toLocaleString() +
+												"</div><div>"+ type.toLocaleString() +
+												"</div><div>"+ age.toLocaleString() +
+												"</div><div>"+ weight.toLocaleString() +
+												"</div>"+
+												"</div></p></div>" +
+												"<div id='myModal2" + num2 + "' class='modal'><div class='modal-content' style='width:500px; height:auto; margin:0 auto; top:30%; margin-top:-150px;'>" +
+												"<span onclick=modal_n2(" + num2 + ") class='close'>&times;</span>" +
+												"<h3 style='color:black;'>상세보기</h3>" +
+												"<div style='text-align:center;'><img style='width:60%; margin-bottom:15px;' src='"+picture+"'></div>" +
+												"<div style='color:black'>보호시설 : " + shelter.toLocaleString() +
+												"</div><div style='color:black'>전화번호 : "+ tel.toLocaleString() +
+												"</div><div style='color:black'>등록번호 : "+ notice.toLocaleString() +
+												"</div><div style='color:black'>발견장소 : "+ place.toLocaleString() +
+												"</div><div style='color:black'>견종 : "+ type.toLocaleString() +
+												"</div><div style='color:black'>나이 : "+ age.toLocaleString() +
+												"</div><div style='color:black; margin-bottom:30px;'>무게 : "+ weight.toLocaleString() +
+												"</div></div></div>"
+
+												num2 += 1;
+
+											  });
+											  $(".img_2").append(content2);
+										});
+								</script>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<script>
+						function modal_b2(i) {
+							//var opp = document.getElementById('myModal2i');
+							//opp.style.display = "block";
+							$('#myModal2' + i).css('display','block');
+							};
+						function modal_n2(i) {
+							//var oppp = document.getElementById('myModal2i');
+							//oppp.style.display = "none";
+							$('#myModal2' + i).css('display','none');
+							};
+
+						for(i=1;i<14;i++){
+						window.onclick = function(event) {
+							if (event.target == '#myModal2'+i) {
+								$('#myModal2' + i).css('display','none');
+							};
+							};
+							};
+						</script>
+
+
+
+					<div class="single-portfolio all ny123" style="margin:0;">
+						<div class="relative">
+							<div class="thumb">
+								<div class="img_3" style="display:none;" id="img3">
+								<script>
+									const dom3 = $('.img_3');
+									let content3 = "";
+									  let aa3 = $.ajax("{% static 'content/ny.xml' %}")
+										.done(function(data){
+											var num3 = 1;
+											$(data).find('item').each(function(){
+											  var picture = $(this).find('popfile').text();
+											  var type = $(this).find('kindCd').text();
+											  var age = $(this).find('age').text();
+											  var weight = $(this).find('weight').text();
+											  var shelter = $(this).find('careNm').text();
+											  var tel = $(this).find('careTel').text();
+											  var notice = $(this).find('noticeNo').text();
+											  var place = $(this).find('happenPlace').text();
+
+
+
+											  content3 += "<div class='card' style='width:200px; height:300px; background-color:transparent; float:left; margin:10px;'><p style='margin:0%;' id='myBtn3" + num3 + "'><img style='width:200px; height:150px;' onclick=modal_b3(" + num3 + ") class='card-img-top' src='"+picture+"' alt='Card image' width='50'>"+
+												"<div class='card-body'><div class='card-title' style='font-weight:bold'>"+ shelter.toLocaleString() +
+												"</div><div>"+ type.toLocaleString() +
+												"</div><div>"+ age.toLocaleString() +
+												"</div><div>"+ weight.toLocaleString() +
+												"</div>"+
+												"</div></p></div>" +
+												"<div id='myModal3" + num3 + "' class='modal'><div class='modal-content' style='width:500px; height:auto; margin:0 auto; top:30%; margin-top:-150px;'>" +
+												"<span onclick=modal_n3(" + num3 + ") class='close'>&times;</span>" +
+												"<h3 style='color:black;'>상세보기</h3>" +
+												"<div style='text-align:center;'><img style='width:60%; margin-bottom:15px;' src='"+picture+"'></div>" +
+												"<div style='color:black'>보호시설 : " + shelter.toLocaleString() +
+												"</div><div style='color:black'>전화번호 : "+ tel.toLocaleString() +
+												"</div><div style='color:black'>등록번호 : "+ notice.toLocaleString() +
+												"</div><div style='color:black'>발견장소 : "+ place.toLocaleString() +
+												"</div><div style='color:black'>견종 : "+ type.toLocaleString() +
+												"</div><div style='color:black'>나이 : "+ age.toLocaleString() +
+												"</div><div style='color:black; margin-bottom:30px;'>무게 : "+ weight.toLocaleString() +
+												"</div></div></div>"
+
+												num3 += 1;
+
+											  });
+											  $(".img_3").append(content3);
+										});
+								</script>
+								</div>
+							</div>
+						</div>
+					</div>
+					<script>
+						function modal_b3(i) {
+							//var opp = document.getElementById('myModal3i');
+							//opp.style.display = "block";
+							$('#myModal3' + i).css('display','block');
+							};
+						function modal_n3(i) {
+							//var oppp = document.getElementById('myModal3i');
+							//oppp.style.display = "none";
+							$('#myModal3' + i).css('display','none');
+							};
+
+						for(i=1;i<14;i++){
+						window.onclick = function(event) {
+							if (event.target == '#myModal3'+i) {
+								$('#myModal3' + i).css('display','none');
+							};
+							};
+							};
+						</script>
+
+					<div class="single-portfolio all yy123" style="margin:0;">
+						<div class="relative">
+							<div class="thumb">
+								<div class="img_4" style="display:none;" id="img4">
+								<script>
+									const dom4 = $('.img_4');
+									let content4 = "";
+									  let aa4 = $.ajax("{% static 'content/yy.xml' %}")
+										.done(function(data){
+											var num4 = 1;
+											$(data).find('item').each(function(){
+											  var picture = $(this).find('popfile').text();
+											  var type = $(this).find('kindCd').text();
+											  var age = $(this).find('age').text();
+											  var weight = $(this).find('weight').text();
+											  var shelter = $(this).find('careNm').text();
+											  var tel = $(this).find('careTel').text();
+											  var notice = $(this).find('noticeNo').text();
+											  var place = $(this).find('happenPlace').text();
+
+
+
+											  content4 += "<div class='card' style='width:200px; height:300px; background-color:transparent; float:left; margin:10px;'><p style='margin:0%;' id='myBtn4" + num4 + "'><img style='width:200px; height:150px;' onclick=modal_b4(" + num4 + ") class='card-img-top' src='"+picture+"' alt='Card image' width='50'>"+
+												"<div class='card-body'><div class='card-title' style='font-weight:bold'>"+ shelter.toLocaleString() +
+												"</div><div>"+ type.toLocaleString() +
+												"</div><div>"+ age.toLocaleString() +
+												"</div><div>"+ weight.toLocaleString() +
+												"</div>"+
+												"</div></p></div>" +
+												"<div id='myModal4" + num4 + "' class='modal'><div class='modal-content' style='width:500px; height:auto; top:30%; margin-top:-150px;'>" +
+												"<span onclick=modal_n4(" + num4 + ") class='close'>&times;</span>" +
+												"<h3 style='color:black;'>상세보기</h3>" +
+												"<div style='text-align:center;'><img style='width:300px; height:350px; margin-bottom:15px;' src='"+picture+"'></div>" +
+												"<div style='color:black'>보호시설 : " + shelter.toLocaleString() +
+												"</div><div style='color:black'>전화번호 : "+ tel.toLocaleString() +
+												"</div><div style='color:black'>등록번호 : "+ notice.toLocaleString() +
+												"</div><div style='color:black'>발견장소 : "+ place.toLocaleString() +
+												"</div><div style='color:black'>견종 : "+ type.toLocaleString() +
+												"</div><div style='color:black'>나이 : "+ age.toLocaleString() +
+												"</div><div style='color:black; margin-bottom:30px;'>무게 : "+ weight.toLocaleString() +
+												"</div></div></div>"
+
+												num4 += 1;
+
+											  });
+											  $(".img_4").append(content4);
+										});
+								</script>
+								</div>
+							</div>
+						</div>
+					</div>
+					<script>
+						function modal_b4(i) {
+							//var opp = document.getElementById('myModal4i');
+							//opp.style.display = "block";
+							$('#myModal4' + i).css('display','block');
+							};
+						function modal_n4(i) {
+							//var oppp = document.getElementById('myModal4i');
+							//oppp.style.display = "none";
+							$('#myModal4' + i).css('display','none');
+							};
+
+						for(i=1;i<14;i++){
+						window.onclick = function(event) {
+							if (event.target == '#myModal4'+i) {
+								$('#myModal4' + i).css('display','none');
+							};
+							};
+							};
+						</script>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- .section -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDy81EbO46BRSnX1DOgg_F84bhsdbku2z4" ></script>
+	<section class="site-section " id="section-map">
+		<div class="container">
+			<div class="row">
+				<div class="section-heading text-center col-md-12">
+					<h2>가까운 동물병원 찾기</h2>
+				</div>
+				<div id="map" style="height: 600px; width: 600px; color:black; margin:0 auto;"></div>
+				<script>
+					// 변수 설정 (위도, 경도, 병원이름, 병원주소)-> 총 861개
+					var latt = [37.5562786475, 37.5616390569669, 37.5536524950831, 37.5621102785, 37.5592671980408, 37.5623662013, 37.5228898097, 37.5471680349, 37.5048895246, 37.5542674834, 37.520718445, 37.5225890871, 37.5865548851, 37.5605230183, 37.5440390436, 37.5222677903, 37.5574464252, 37.5708119884, 37.5471680349, 37.5206283694, 37.5252767232, 37.5362099555, 37.5491512263, 37.5384883065, 37.5450195494, 37.5313873488, 37.5221424985, 37.5082039016, 37.5180418126, 37.5335414542, 37.5376380193, 37.5205128803, 37.5466158375, 37.5260820776, 37.5191616015, 37.5229152481, 37.5238243125, 37.5291443474, 37.521646127, 37.5480348399, 37.5302942753, 37.5302442985, 37.5444630603, 37.5366338421, 37.524673414, 37.5132814218, 37.5351351218, 37.5311734995, 37.5495547404, 37.5328771546, 37.6222180721, 37.4899666085825, 37.5724816165, 37.4840342216191, 37.543580891621, 37.5224807859, 37.5626242813, 37.4990202483, 37.4810628133, 37.5213339385, 37.5950400511764, 37.5982254885611, 37.6570619052, 37.6634541475, 37.6757488055985, 37.6477918145385, 37.5573168541, 37.5458449923, 37.6614240554, 37.6427351156, 37.6517477192, 37.6624151196, 37.6434335793, 37.6249904553, 37.6276661941, 37.6689942558, 37.6498791496, 37.6398566414, 37.665064644, 37.6791213985, 37.6268409663, 37.626506802302, 37.6192820405, 37.6398771329, 37.650913685, 37.6653052023, 37.6153725771, 37.6499001079, 37.6391091469, 37.6729942632, 37.6467471743511, 37.6284711917722, 37.6574521561, 37.4924589673, 37.6265077394, 37.5181076358, 37.6492617888, 37.6237672555856, 37.4939545172, 37.503756054, 37.4917021105, 37.4875252031, 37.5087978724, 37.5068249022, 37.4917286302, 37.5033573429, 37.4849304421, 37.485419358, 37.4924945269, 37.5085485423313, 37.4828524114999, 37.4748244046, 37.4811930458, 37.5154427579951, 37.4718929106, 37.4875873756, 37.4949556249, 37.4708539474, 37.4983590468, 37.5070566594153, 37.4854714892616, 37.5209206616177, 37.4847970196, 37.5066330688, 37.4804592712329, 37.5045125366589, 37.4624678887, 37.5029607782, 37.4559469444, 37.4902860572748, 37.4613879467596, 37.4914164864, 37.4966537157, 37.4838721930246, 37.4845315986423, 37.4881163412, 37.5209902926, 37.5021752997, 37.4899047185, 37.4833425346045, 37.5075102334, 37.4792633922114, 37.5006110861, 37.4789418977, 37.4920972165714, 37.4864895584, 37.5121797002, 37.5160917138, 37.5017215948, 37.5054357534949, 37.524007671267, 37.5138581000445, 37.4742542858424, 37.5106282794, 37.5120823852, 37.5090368366, 37.4942669969, 37.4924200454, 37.4893073033, 37.5077641288, 37.5125505385, 37.4764360847334, 37.5022623024, 37.5174940081, 37.4941121321, 37.5122280561, 37.4931658947988, 37.52433553, 37.4975225947, 37.5000319762, 37.5112590386, 37.4998903585, 37.5025415401, 37.523890472, 37.4907051764, 37.5071928868, 37.5107680223, 37.5144896385, 37.492701056, 37.4950815653, 37.4934987743496, 37.5243488903, 37.4958580102413, 37.4902453894, 37.5222614536, 37.5188198082, 37.4829750068549, 37.4657532384, 37.5223493678, 37.4971009189, 37.5636063418975, 37.4747708435, 37.4913305445911, 37.5690751035776, 37.5345252034396, 37.561534819, 37.6347418761, 37.4771574482, 37.5007008839, 37.477569024099, 37.4986303032227, 37.5178814038, 37.5534701459, 37.5135987997754, 37.5075607769, 37.5581840647, 37.5014389201, 37.5049791289, 37.5080600434441, 37.4984533839, 37.5243268228, 37.5181178325, 37.5221442987, 37.4934592156, 37.5332451444, 37.5174294004, 37.5220926631, 37.5108286569, 37.5172337072, 37.5571031370179, 37.5138160922454, 37.5285614952442, 37.5010543254, 37.6160348337576, 37.5182397891, 37.4767382259072, 37.5215521399727, 37.5177445036, 37.5010283417, 37.4560986789, 37.5385572812, 37.6141004604304, 37.5899514594421, 37.613988940678, 37.5871061158, 37.6136346639, 37.591402734, 37.5193858674, 37.5903510263, 37.6034669675, 37.6050727006, 37.5984154028, 37.6107383409, 37.6029826816, 37.6111793167, 37.5961950796, 37.6028163917, 37.5918351288, 37.6088425273, 37.605895196699, 37.59229647, 37.6070736463006, 37.6020583669978, 37.6001933936006, 37.6065469984, 37.6108987324, 37.6180706202, 37.6050496083, 37.6067853198, 37.5916950048, 37.5857946198, 37.5575547142, 37.584933955, 37.5692128091, 37.5800283086, 37.5820464071, 37.6058167889, 37.5754945379, 37.5896236119, 37.5582644830733, 37.567792196416, 37.5771842561182, 37.576653702, 37.5709012997, 37.5835792545771, 37.569086100061, 37.5831366601, 37.5806799644, 37.578842339, 37.5448247685198, 37.5302241566233, 37.5563607848, 37.5708141022, 37.5570234585771, 37.5507531467, 37.5563588441, 37.5470143994802, 37.5483454054, 37.5564711671, 37.541513877, 37.576057595, 37.5698023984, 37.554861492, 37.547932175, 37.5480986303, 37.5464872725806, 37.5550600895, 37.5577496561, 37.5579907283, 37.5568748321, 37.555235884, 37.5534642229, 37.5499020287, 37.5528867471, 37.5378112344, 37.5441066775, 37.5461571566, 37.560997114317, 37.5478998101, 37.5577142611699, 37.5540899431969, 37.5447555735, 37.5524319716, 37.5445854719, 37.5530373040656, 37.5763446029, 37.5776660134193, 37.5477242911, 37.5576988515, 37.576532901, 37.4771145962, 37.5674328784714, 37.5509731842, 37.6574603899866, 37.5755049516, 37.4858849248, 37.5515012548, 37.5899577314, 37.5562848777, 37.504972835, 37.5000174503, 37.5080700184, 37.4972757848, 37.5066003155, 37.4997174598, 37.5038504677, 37.487695807, 37.4848457968, 37.5052817759, 37.5116890193, 37.4831439645, 37.5044623895, 37.5118145209, 37.508952384, 37.4837020651, 37.4977544901, 37.4841429275, 37.4809032797, 37.4768226575, 37.5066916981, 37.5513148289145, 37.6433971085713, 37.5162828157564, 37.5252183831, 37.4796793969022, 37.4999933881, 37.4933476488, 37.4797323104, 37.6042203376, 37.4984369324107, 37.5573770486702, 37.5660013834, 37.5589997244, 37.4849530185243, 37.5248628985, 37.5523769939, 37.6102201245, 37.5171720328234, 37.5484342028, 37.5859547263672, 37.5746762875868, 37.5769834881808, 37.5160847902, 37.5720416663443, 37.5720001480217, 37.5150007145, 37.5868550873, 37.5727786362, 37.5846273629, 37.5895028255, 37.5751174885, 37.5708440428, 37.591118013, 37.5678531915, 37.5650788061, 37.5726595235, 37.5789167354, 37.5903495153, 37.5940412883, 37.4946118839962, 37.5833993869619, 37.5042028503364, 37.577856039, 37.5174051836, 37.5805499829924, 37.4951693008745, 37.5666525375, 37.5728970573, 37.5223152857, 37.4891824008, 37.5355851928888, 37.5620514465, 37.5331014519336, 37.6237587570564, 37.6185505752, 37.5121073271, 37.5390428984, 37.5452620708929, 37.5090485844, 37.4966600912153, 37.4898417228977, 37.5090485844, 37.5035615583, 37.4950749316, 37.4590388195299, 37.5071845473919, 37.4583730109632, 37.4885823516, 37.5005912663, 37.4953708879759, 37.4893317571, 37.4860419123, 37.4525655999506, 37.4901265714, 37.4992688134186, 37.490851083, 37.5034334051, 37.5007437816041, 37.4970773489, 37.5574118932, 37.4525934664, 37.470979218, 37.4797382676, 37.4516106129, 37.4583115472, 37.4706232079, 37.4638470645, 37.4502091846, 37.4686636754, 37.4929912739998, 37.5187391102, 37.4942151719, 37.5064658881, 37.5209816077289, 37.4980812438, 37.6291767677, 37.5114466716, 37.5081404592, 37.5036872956, 37.5015541475, 37.5063558065, 37.5364045417, 37.4983405536, 37.5039452642, 37.516381639, 37.5055368689, 37.5095279029, 37.4931432502, 37.5054825714, 37.5115421534902, 37.5026143982968, 37.4917332560159, 37.528557, 37.508655407, 37.4967333813956, 37.5075613155217, 37.5023837955, 37.5022157794, 37.5212622166941, 37.4927682466, 37.5073490241712, 37.499524625987, 37.503231277, 37.5085256118419, 37.5179537428, 37.497066378, 37.507048364, 37.508169247, 37.5102268819, 37.5320986781, 37.5120856031, 37.501129324546, 37.506371373, 37.4920924398603, 37.5044552139432, 37.4786174059, 37.5086642577842, 37.5106904978, 37.5096899518, 37.5109305690584, 37.5049781864348, 37.5058077145, 37.4882239528, 37.4766011683, 37.5068350276, 37.5115592766, 37.5187351444, 37.5119790175, 37.4908560429, 37.5749034372, 37.4996164902, 37.506869907, 37.5988785967, 37.6049311583, 37.5137525026, 37.5757946981, 37.5846460026, 37.5992565697, 37.578705616, 37.5980682133054, 37.6214145024206, 37.5920488431, 37.6062920232, 37.5820259433, 37.6217004368, 37.6112872386, 37.5952746826, 37.5982678864, 37.6132040639, 37.6010026392, 37.6153555879, 37.6113370209, 37.6010669871, 37.5907969, 37.6219952378, 37.6137586833, 37.6055765936, 37.6081601018, 37.5997096794, 37.6078034673, 37.619618428524, 37.5969801821211, 37.6479524620968, 37.5997867071, 37.6075091152, 37.6422590221, 37.6110008564857, 37.5982235996, 37.6165629329, 37.4730360912, 37.4816252217, 37.5538630842, 37.6122292462, 37.531676161, 37.6057714253, 37.6088195837, 37.5743677165, 37.4841302424, 37.5796254728, 37.4822728163, 37.482566401879, 37.4742266669369, 37.4864046552299, 37.4892653061, 37.4869411895, 37.4761251572251, 37.4891681919, 37.4817489205, 37.4848318346, 37.474064309725, 37.4823520947276, 37.4896874898, 37.4680385091, 37.4783089295257, 37.4801362751, 37.4825550734, 37.4754988407355, 37.4714716639, 37.4871130346, 37.5206965602, 37.547230978, 37.4848316738, 37.5283156371, 37.4772325074, 37.4801592066, 37.5393269306, 37.5504347544, 37.5665912196, 37.4717575654, 37.5417074426, 37.5311987642, 37.5182525740002, 37.5335101921176, 37.535626240506, 37.5324253352719, 37.53643692, 37.5379375928, 37.548705017, 37.5396425619, 37.543103172748, 37.5363987308, 37.5300771114754, 37.5337468434, 37.5265256824247, 37.5338269323826, 37.5347269331, 37.5342845777, 37.5395897598, 37.5193858674, 37.5559345458989, 37.5737179527, 37.5379375928, 37.5586745024, 37.5655085858, 37.5551858836, 37.5417103481, 37.5596538078, 37.5390724292, 37.5457867976, 37.5664068814225, 37.5560413457928, 37.5562506281, 37.5432714522, 37.5633060141, 37.5430277103361, 37.5657029568, 37.5633603714, 37.5678235802, 37.5466439848, 37.5986857437583, 37.5464945465339, 37.548034859, 37.5772935378921, 37.5539961487, 37.5545375332, 37.6159945075496, 37.6046919209, 37.5890578887, 37.5068621269, 37.5848176192944, 37.6030758758179, 37.6158316266867, 37.6125959835317, 37.5881862824, 37.5810826258, 37.6078612621, 37.5953229667, 37.5983343514, 37.6169670149, 37.5952076389918, 37.5925215578142, 37.602701292288, 37.5909932187, 37.5769438874548, 37.5887971549, 37.5999541088, 37.5798688403505, 37.5821768013, 37.6106700604, 37.5028423325559, 37.4809107010735, 37.5918370631026, 37.6690965835, 37.4881340767, 37.5290287769, 37.5128943373, 37.5984459791, 37.5953229667, 37.5743677165, 37.4670241833, 37.5551526935, 37.4831060622, 37.5882317052, 37.495940175, 37.4842251853, 37.545974741, 37.6584329737, 37.4892682654, 37.528563545, 37.5447317478, 37.5489352493, 37.4791429582, 37.5137139814, 37.5724911137, 37.5092442649, 37.552013666, 37.5485624209, 37.4888654078, 37.5369621405, 37.5452361828457, 37.5428712536574, 37.5593275281582, 37.5595404216, 37.5473004028, 37.5417698406, 37.562700367807, 37.5361533025, 37.5640653572, 37.5518116658, 37.6382559424, 37.6476166706, 37.5485217672, 37.5357790534, 37.6579267152, 37.6637908248, 37.5392431162, 37.5420733247, 37.6401834564, 37.6690965835, 37.6644810115117, 37.6554967702, 37.656196111588, 37.6826608525, 37.6629766452533, 37.6501894079, 37.6627062089, 37.6676649417, 37.6594962086, 37.6619357252, 37.6169921535428, 37.6586180656396, 37.6348043670157, 37.6477507887972, 37.6192030241146, 37.6453612806773, 37.6520343364, 37.6437738341, 37.6176398042, 37.6202693739, 37.640899214, 37.648003018807, 37.6199095482, 37.611113253231, 37.6120235733, 37.6267265169, 37.6140533167745, 37.6288346161, 37.6344086498592, 37.618919625, 37.5029114753553, 37.5732247174495, 37.6258492879013, 37.6203032665551, 37.4899035602743, 37.5699035068, 37.5520179715, 37.5452422483, 37.5330716031, 37.6161246173, 37.5530790264, 37.5322133988181, 37.5347951648309, 37.5468667112, 37.5438961029, 37.5752965765125, 37.5314270259, 37.5626242813, 37.5411459829, 37.5317873344, 37.5484356037, 37.5629533764, 37.5311795386, 37.5765043223, 37.5582026667, 37.5765043223, 37.5568728331, 37.5520496681, 37.5584711324, 37.5537293845, 37.5339420671631, 37.5397746754172, 37.5601164064, 37.5581948166, 37.5481190774, 37.5643170344317, 37.5569640745914, 37.545649896, 37.5525904097, 37.5327413706, 37.5470289081155, 37.5671174405, 37.5468526116763, 37.4537951382601, 37.5448966505, 37.5540712006, 37.6159740479, 37.5004198781, 37.5316303116, 37.5200045554, 37.5343389419, 37.4953703652, 37.6735745712, 37.5077779605, 37.6453606104, 37.5326858116, 37.5953559481, 37.5552514067, 37.5282447056, 37.5346258659, 37.5505272739, 37.5553630267, 37.5532114544, 37.5839920186, 37.4809117997, 37.5320843639, 37.5098702455, 37.536916649, 37.5423071814, 37.5345221845, 37.4832856493, 37.5181527600016, 37.5354310416, 37.5349080261, 37.565960116, 37.5429635024, 37.5631698704, 37.5317906508899, 37.5520108905, 37.554535066, 37.5251540459, 37.6094433044, 37.4868493416, 37.5478970752, 37.5189388821, 37.5660402677, 37.5720016034, 37.5157286348, 37.5520075182, 37.5933928257, 37.5350896851, 37.5502557212, 37.5442618539, 37.5523095301, 37.5549421043, 37.5458313483, 37.5492741737, 37.5482450174, 37.5490107225, 37.5417334033, 37.5299732011092, 37.5423652334, 37.5487938096, 37.5416852134892, 37.534124521, 37.5532980221, 37.5480445376086, 37.5501555227, 37.5401891953, 37.5315329901, 37.5312474482591, 37.5545768206236, 37.5317415452, 37.5247163404, 37.5590565251, 37.5507913956, 37.56463092, 37.52974271, 37.5472717821, 37.5372546436, 37.5607966722, 37.5344510612, 37.5457129664, 37.6346753637, 37.5578002184, 37.5288162243, 37.6414458508, 37.5670169214, 37.5743677165, 37.4974084037, 37.6694239583524, 37.5869999996];
+					var lngg = [127.0099322043, 126.996863045719, 127.009624561334, 126.9969349925, 127.012875648003, 126.9999909453, 127.0206021723, 127.0056761478, 127.0022800354, 127.0114484365, 126.8728702531, 126.8513962156, 126.9108592933, 127.0191049588, 126.8624203082, 126.8426320737, 126.969510283, 127.0214620759, 127.0056761478, 126.8601375436, 126.8594501, 126.8284552348, 126.8639046741, 126.8715004224, 126.862608611, 126.864099875, 126.8516414469, 126.8651010192, 126.8706079341, 126.8695266945, 126.8821104851, 126.8348892706, 126.8753474893, 126.8703542151, 126.8429824772, 126.8648980625, 126.8423256281, 126.8760101173, 126.8742261457, 126.867826638, 126.8324194656, 126.8733021026, 126.8708836481, 126.8798627462, 126.864383559, 126.8555047137, 126.8637626981, 126.837467914, 126.8669503252, 126.8684779202, 127.0864420306, 127.144645591304, 127.073031546, 127.094306966107, 127.049159653816, 127.1336757985, 126.8530054388, 127.0621803818, 127.0832536454, 126.8564529833, 127.079425478141, 127.061695856351, 127.0744651745, 127.0762214845, 127.055065931913, 127.077608619981, 126.8273022616, 126.9276960321, 127.0592827716, 127.0641717845, 127.0775602843, 127.0660927589, 127.0654459525, 127.0799883562, 127.0775760355, 127.0803257246, 127.0622379528, 127.0686696345, 127.0580253309, 127.0549528594, 127.0509721503, 127.061965875328, 127.0796333685, 127.0642826274, 127.0618444693, 127.0665622819, 127.0666763173, 127.0757045047, 127.0649164464, 127.0559685053, 127.070967541646, 127.07190211211, 127.0667275291, 126.9916367326, 127.0619783046, 127.018487833, 127.0763610869, 127.073270581304, 126.9900624852, 127.0207914374, 126.9914875552, 126.9942017287, 127.0219329128, 126.9990725807, 127.0248769727, 127.0108073281, 127.0412694186, 127.0170641681, 126.9864532192, 127.012017435543, 127.006148137157, 127.0421727965, 126.9983357381, 127.014194676397, 127.0459514495, 127.0259158517, 127.0170482445, 127.0253810196, 126.9985253436, 127.009900006642, 126.985212848137, 127.015543996793, 126.9958527134, 127.0139519699, 126.9951676742, 127.000852080692, 127.0369482493, 127.0120694009, 127.0579402392, 127.020373313737, 127.026591776858, 126.9830746828, 126.9877416321, 127.009092397119, 127.010869851708, 126.9960696276, 127.0363843324, 126.9900613958, 127.0815130663, 127.0601111618, 127.0268004009, 127.050927712151, 127.0516642818, 127.0472536699, 127.083416338886, 127.0451779493, 127.0434334692, 127.0386668547, 127.0505793618, 127.041051238043, 127.049246755303, 127.028961999995, 127.049798437503, 127.0241593676, 127.0434515101, 127.0327547017, 127.0346887198, 127.0400296791, 127.0688436651, 127.0344732858, 127.0531655433, 127.046313280616, 127.0503354456, 127.0237724618, 127.0343177433, 127.0260736717, 127.035431558249, 127.0447889813, 127.0421946045, 127.0393552042, 127.0238835908, 127.0514873657, 127.0356922937, 127.03964376, 127.0561442979, 127.0276372309, 127.0278557123, 127.0528547312, 127.0577062765, 127.0451786012, 127.059784381111, 127.0235121836, 127.046447007293, 127.0329816903, 127.0396609978, 127.0487900618, 127.080284021794, 127.1012277905, 127.035185885, 127.0422079375, 126.807663338637, 127.1050203952, 127.038479247632, 126.963217079063, 126.873129432724, 126.8116552429, 126.9241794559, 127.1422143477, 127.052351935, 127.000680475851, 126.908577963892, 127.101804927, 126.8264465179, 126.919852228458, 126.903839311089, 126.8391023967, 126.9204195748, 126.9220082244, 126.910760431215, 126.8954892662, 126.9042363092, 126.9251980236, 126.932483651, 126.9098392566, 126.9022924801, 126.8964672766, 126.8844562306, 126.9120397684, 126.9037159932, 126.954305022123, 126.921390281223, 126.904214684333, 127.0517912494, 126.926536184752, 126.8958824727, 126.898244846749, 126.896255530943, 126.8536455258, 126.9324438614, 126.8995718666, 127.0729984469, 127.062356499826, 127.010099510457, 127.045702498651, 127.0181788077, 127.0615281647, 127.012980433, 126.975027878, 127.0038406323, 127.0245562766, 127.0117416044, 127.0342432942, 127.0093006722, 127.0421136728, 127.056425013, 127.0351979805, 127.0138566678, 127.0137006409, 127.0593316155, 127.011043571425, 127.0134108589, 127.060697318011, 127.039883811619, 127.033641055383, 127.0303783767, 127.0225427395, 127.0469564682, 127.0220109714, 127.0285347458, 126.9409311021, 126.947081307, 126.958278599, 126.9486307381, 126.9330524361, 126.911147837, 126.9267055133, 127.0243667897, 126.9161160725, 126.9427352823, 126.956536133809, 126.931895494061, 126.910898487972, 126.9248632869, 126.9613002997, 126.949279675639, 126.932039176879, 126.913471848, 126.9258464454, 126.9108005635, 126.939453071603, 127.113692012198, 126.9326791415, 126.9127073134, 126.953336295967, 126.9160668555, 126.9426566265, 126.943429950569, 127.0892219272, 126.9045845106, 126.9503578269, 126.8946745079, 126.9046988132, 126.9108698965, 126.9227465747, 126.9183873942, 126.957978065788, 126.9113721469, 126.9288117718, 126.9281596419, 126.9190885658, 126.9384474505, 126.9123110871, 126.9544578891, 126.9065220147, 126.9472781658, 126.9541309986, 126.9452173157, 126.917800828814, 126.917523054, 126.913760520334, 126.920577625686, 126.9460240205, 126.9543024402, 126.9527682959, 126.952913347508, 126.8932160242, 126.88863254578, 126.9303874644, 126.9225327747, 126.9686693118, 126.9767106441, 126.840682389701, 126.9564987626, 127.066725486168, 127.0676595876, 126.9685353424, 126.9139520503, 127.0973785273, 127.0181532099, 126.9424471391, 126.9507426746, 126.9640110096, 126.9531961692, 126.9665180017, 126.9223167762, 126.94690396, 126.9755404662, 126.9796525032, 126.9404201934, 126.939044241, 126.9757906914, 126.9379462967, 126.9253717136, 126.9620335434, 126.9733528289, 126.9435111663, 126.9791778178, 126.9814580232, 126.9766519463, 127.0408606642, 127.12772905235, 127.01569842347, 127.10300682725, 126.8682424861, 126.982197716887, 126.9254558572, 127.0619178573, 126.9556582338, 127.03768414, 127.058385946952, 127.02441924803, 126.9108294599, 126.819937242, 126.969926433995, 126.9704149903, 127.0245530844, 126.9292012238, 126.854558613306, 127.0697399381, 127.043548357685, 127.037782324867, 127.035519343159, 126.861050934, 127.023780775101, 127.073583124255, 126.8712375639, 127.0416788744, 126.9357343378, 127.0315786302, 127.0609693435, 127.0495874933, 127.0474610909, 127.0665142714, 127.0685446196, 127.0673603957, 127.057636604, 127.0696913773, 127.0540722958, 127.0588669352, 127.141872674799, 127.043949965627, 127.051459855808, 127.0584919277, 126.8653061645, 127.026790176876, 126.830194265182, 127.0558662067, 127.0714245154, 126.8911754076, 126.8563788423, 127.068348045719, 126.915778015, 126.902946159766, 126.927679310517, 127.0188479514, 126.9159517996, 127.0547095899, 127.014113724387, 126.8869872307, 126.856141274787, 126.83980409164, 126.8869872307, 126.8616667632, 126.8720090767, 126.693256675241, 126.886273187735, 126.678755970479, 126.8843133797, 126.8846205553, 126.842931316693, 126.8916710461, 126.8385607404, 126.906239019864, 126.8563091898, 126.884878544097, 126.8939077523, 126.8511175254, 126.847886855357, 126.8466067403, 126.9092642825, 126.9058061146, 126.9032146468, 126.9047364314, 126.9071364233, 126.8995508232, 126.8956727232, 126.9035177324, 126.9125809382, 126.8968872604, 127.143891478021, 126.9335455025, 127.1330645234, 127.1292363646, 126.9342149915, 127.1461487221, 127.0578252254, 127.0804823314, 127.1166306591, 127.1386772778, 127.110983913, 127.1208758865, 127.1223273637, 127.1462939788, 127.0968143214, 127.1103814771, 127.089410724, 127.1272057729, 127.1436016027, 127.0848460297, 127.108696430503, 127.117057044524, 127.117750401117, 127.1168163002, 127.134017593, 127.136769784754, 127.089328005825, 127.1102115838, 127.0962692422, 127.10856553728, 127.1280910194, 127.128577893824, 127.153136377262, 127.1134518542, 127.104652131183, 127.1056147944, 127.1191646351, 127.0922626521, 127.087482083, 127.1306905923, 127.1214378544, 127.0841884297, 127.097150851373, 127.0817074018, 127.126019128091, 127.088600557445, 127.1191081995, 127.114614322513, 127.0941989805, 127.1273282004, 127.118920261411, 127.097400048143, 127.1061676968, 127.1277349986, 127.1275298048, 127.0931536167, 127.0791794593, 127.1102899248, 127.0870431473, 127.1266675224, 127.0155133112, 127.0659173376, 127.0799843019, 126.9602757208, 126.9650470499, 127.1044460998, 126.9710695489, 127.0001811481, 126.958980058, 127.0156454219, 126.92492360554, 126.919630231687, 126.9179091552, 126.9605073394, 126.9709493957, 127.0738680517, 126.9297755624, 126.9183268407, 126.9110038549, 126.9178677842, 126.9101399559, 126.9178155817, 126.9175889578, 126.9307499952, 126.9159675578, 126.9195164469, 126.912317354, 126.9157425558, 126.9316449146, 126.921451956, 126.9319170472, 126.917747395359, 126.920073721234, 126.928725037227, 126.9181271352, 126.9221549785, 126.923143008, 126.916918963552, 126.9250771372, 126.9231966482, 126.9329076935, 126.9120197437, 127.0340554057, 126.9321259403, 127.0802189573, 126.9111262854, 127.0357747299, 126.9178561185, 127.1239109333, 126.898726925, 126.9014543908, 126.917014228169, 126.916928655866, 126.956425478567, 126.9272304645, 126.9487521853, 126.915786945169, 126.9275471638, 126.951460177, 126.9551667718, 126.966381259015, 126.944271477138, 126.9280668029, 126.959296033, 126.931838401283, 126.9564991591, 126.9170160508, 126.96683731671, 126.9824687292, 126.946169545, 127.0299905996, 126.9779155119, 126.9321554291, 126.9991944976, 126.9352645365, 126.9038314196, 126.9618914209, 126.9770001872, 127.0240823503, 126.9345276699, 126.9873948018, 126.995632923, 126.979929977219, 127.001684528337, 126.961758813709, 127.005295879732, 126.963146534, 126.9679749045, 126.9779422362, 126.9895585672, 126.987834526645, 126.9872191899, 126.964825430494, 127.0027832578, 127.000779482871, 126.950033964465, 127.0074040151, 126.9511410317, 126.9610856636, 126.975027878, 127.028746548983, 127.0523486695, 126.9679749045, 127.0337361692, 127.0303254835, 127.0335852082, 127.0179957881, 127.0370052409, 127.0531798425, 127.0529130309, 127.052746431289, 127.033966142251, 127.027528583, 127.0137324848, 127.0323483428, 127.013140226958, 127.0427582274, 127.0312436776, 127.0250516712, 127.0194816339, 127.096247367098, 127.044879575085, 127.0210436335, 127.085701210557, 127.0193794301, 127.1375265595, 127.092821559558, 127.0959300384, 127.0914353495, 127.0477010428, 127.0819010668, 127.095568936228, 127.093727471286, 127.077608992015, 127.0858999491, 127.0862133093, 127.0985298603, 127.0795761241, 127.0916233517, 127.0913607787, 127.082102471574, 127.072674432141, 127.085725300393, 127.0866595323, 127.085795909105, 127.0883417563, 127.0795040526, 127.087805275622, 127.0881527909, 127.0774270001, 126.863308427228, 127.121098298003, 127.072252574188, 127.0432073857, 127.00909549, 127.1242204835, 126.832566962, 127.1005919709, 127.0795761241, 126.9178561185, 126.9015196259, 126.9378771276, 127.1278890976, 126.9224467945, 126.8722654303, 126.9368323798, 127.0109492684, 127.0657492402, 127.0183902643, 127.0321477961, 127.0876877361, 126.952158995, 127.0491305621, 127.0619075323, 127.0555988898, 127.1118956016, 127.1558008285, 127.143332152, 127.0520135015, 126.837916984, 127.085923149701, 127.076306970239, 127.080941088446, 127.0878590118, 127.0732830849, 127.0962023981, 127.081628296239, 127.0840072938, 127.0800725763, 127.0902490963, 127.0379959008, 127.0337038376, 127.0679067812, 127.0661030301, 127.0364011883, 127.034667719, 127.0920850605, 127.0952794587, 127.0397961145, 127.0432073857, 127.042091997722, 127.0392013968, 127.027740522987, 127.0455279255, 127.046352592923, 127.0353141012, 127.0341005346, 127.0455595674, 127.0418826471, 127.0313756131, 127.030354514803, 127.040329943632, 127.022539668908, 127.014280580353, 127.022453722744, 127.015336208859, 127.0465245665, 127.0230512222, 127.0106018434, 127.020561051, 127.0327082696, 127.014674951786, 127.0169815884, 127.033822431446, 127.0355361555, 127.0262722093, 127.020689935025, 127.0398761588, 127.018057722723, 127.0294002308, 127.126168277794, 126.811754332961, 127.018499880487, 127.015349694451, 126.90673437179, 126.811810756, 126.8367164904, 126.8473273682, 126.8446051556, 127.021742399, 126.869809517, 126.839531637837, 126.863254010706, 126.8358812884, 126.8431614541, 126.81150003082, 126.8550352693, 126.8530054388, 126.8376273114, 126.846408969, 126.8367152522, 126.8400157267, 126.8473967663, 126.8130303447, 126.8449242029, 126.8130303447, 126.8624012435, 126.8710697373, 126.8548199161, 126.8363687179, 126.846669284938, 126.834464328007, 126.8563378674, 126.8618193441, 126.8345749146, 126.850047285697, 126.852176271766, 126.8476343278, 126.8261995863, 126.8428906546, 127.106461389469, 126.818595634, 126.871515010656, 126.890378625486, 126.8368361285, 127.1292098829, 127.0336940808, 126.9115453356, 127.0839614911, 126.9698739336, 127.1359733656, 127.0527236482, 127.0558057136, 126.8645181831, 127.0336937534, 127.067878844, 127.0157576117, 127.140348142, 127.0378404737, 127.0095627523, 127.0711632519, 127.0781347927, 127.0883450024, 127.0198264834, 127.0416787498, 127.078807432, 127.0414279193, 127.0617909343, 127.100122724, 127.0707226281, 126.9207463678, 127.04521609327, 127.0809380434, 127.0703654629, 127.0814419303, 127.0996574054, 127.0825390511, 127.079391324598, 127.0787740881, 127.0870699853, 127.052550022, 127.0193258546, 127.0220079047, 127.0252849043, 127.0253837233, 127.0217233062, 126.9012593087, 126.9054553473, 127.1279207307, 127.0017075204, 127.1441526685, 127.1467348835, 127.125196268, 127.1285866779, 127.1367305685, 127.1334640075, 127.1477469081, 127.1731068234, 127.1536761568, 127.130419688, 127.136535629869, 127.1419398147, 127.1302554539, 127.130894641476, 127.1435715287, 127.1547849722, 127.135626715426, 127.1461598076, 127.1412929964, 127.1213011726, 127.128183979283, 127.143252567571, 127.1381408891, 127.1294805188, 127.1525287821, 127.1717637715, 127.1740728667, 127.1338064168, 127.1436691634, 127.1295021953, 126.9054799188, 127.1356296189, 127.1422539531, 126.9272973574, 127.1485378703, 127.1371716008, 127.0222165877, 126.9097959491, 126.9178561185, 127.0388788674, 127.046487951146, 126.908535466];
+					var hname = ["차지우동물병원", "윤신근박사동물병원" ,"미래지동물의료센터" ,"대한동물병원" ,"바우미우동물병원" ,"황동물병원" ,"압구정웰동물병원" ,"남산동물병원" ,"헬릭스동물메디컬센터" ,"웰펫동물병원" ,"노아동물병원" ,"우신동물병원" ,"아리동물병원" ,"좋아요 동물병원" ,"강현림 종합동물병원" ,"양천종합동물병원" ,"위즈펫 동물병원" ,"웰니스 클리닉(청계천점)" ,"그녀의 동물병원" ,"해성동물병원" ,"신정 동물병원" ,"민병철동물병원" ,"혜인종합 동물병원" ,"나우동물종합병원" ,"토론토 동물병원" ,"필동물종합병원" ,"애니케어동물병원" ,"참사랑동물병원" ,"이솝동물병원" ,"리즈동물병원" ,"가나종합동물병원" ,"일오삼동물병원" ,"행복한동물병원" ,"쿨펫이마트 목동점 동물병원" ,"파란종합 동물병원" ,"우리들 동물메디컬 센터" ,"햇살동물병원" ,"행복한세상동물병원" ,"리더스24시 동물병원" ,"미니주동물병원" ,"서서울호수동물병원" ,"닥터펫동물병원" ,"대현동물병원" ,"목동 동물병원" ,"상아동물병원" ,"푸른들동물병원" ,"하니동물병원" ,"가스펠동물병원" ,"오라고동물병원" ,"팜랜드동물병원" ,"키움 동물병원" ,"마루동물병원" ,"현대종합동물병원" ,"수서동물병원" ,"포레동물병원" ,"방주동물의료센터" ,"고려종합동물병원" ,"센트럴동물병원" ,"다옴동물병원" ,"밀리언동물병원" ,"한국동물영상의학센터" ,"바론동물의료센터" ,"은마로동물병원" ,"고려동물병원" ,"은빛동물병원" ,"25시동물병원" ,"공감동물병원" ,"동물병원 the 말랑" ,"그린동물병원" ,"롯데동물병원" ,"참사랑동물병원" ,"한강동물병원" ,"우리들동물종합병원" ,"미래동물병원" ,"스누피동물병원" ,"당고개동물병원" ,"시마동물병원" ,"러브펫동물병원" ,"참동물병원" ,"수 동물병원" ,"유림동물병원" ,"로얄벳 동물병원" ,"화랑동물병원" ,"브라운동물병원" ,"(주)한빛종합동물병원" ,"이앤박동물병원" ,"우솔동물병원" ,"LK 동물병원" ,"쿨펫동물병원" ,"수락 동물병원" ,"펫가든" ,"엔젤동물병원" ,"주식회사 노원24시동물의료센터" ,"남서울동물병원" ,"웰리스동물병원(월계점)" ,"유림동물안과병원" ,"중계이오동물병원" ,"스마일플러스동물병원" ,"이성환동물병원" ,"우성동물의료센터" ,"방배한강동물병원" ,"내방동물병원" ,"라파엘동물병원" ,"신세계동물병원" ,"서이동물병원" ,"신반포종합동물병원" ,"레스펫동물병원" ,"서초동물병원" ,"수동물병원" ,"임갑미동물병원" ,"다니엘동물병원" ,"사랑의동물병원" ,"프렌즈동물병원" ,"이상록동물병원" ,"한 동물병원" ,"메디펫 동물병원" ,"교대동물병원" ,"우면동물병원" ,"서래동물병원" ,"24시예스동물병원" ,"화인종합동물병원" ,"리즈동물병원" ,"디아나동물병원" ,"반포자이동물병원" ,"반려동물 의료센터 다울" ,"두리종합동물병원" ,"이리온 양재점" ,"꿈꾸는 동물병원" ,"하나동물병원" ,"강남서초 동물병원" ,"서초힐스동물병원" ,"헤이븐동물병원" ,"한나동물병원" ,"아이비동물병원" ,"아델 동물병원" ,"동물제중원금손이 동물병원" ,"청담동물병원" ,"반포한강동물병원" ,"삼성종합동물병원" ,"개포베스트동물병원" ,"논현동물병원" ,"자연동물병원" ,"그린동물병원" ,"포이동물병원" ,"서경석동물병원" ,"우리집동물병원" ,"퍼피즌동물병원" ,"강남 25시동물병원" ,"주주동물종합병원" ,"역삼동물병원" ,"일마레 동물 메디컬 센터" ,"학동24시동물병원" ,"한 동물병원" ,"그레이스 동물병원" ,"닥터펫동물의료센터" ,"충현동물병원" ,"현진우 동물병원" ,"예은동물병원" ,"개포동물병원" ,"강남동물병원" ,"마이펫동물의료센터" ,"개포별빛동물병원" ,"스마트동물병원" ,"24시 신사동물병원" ,"메디포즈 동물의료센터" ,"아크리스 동물의료센터" ,"츄츄 동물병원" ,"이리온 동물의료원" ,"위너스 동물병원" ,"백산동물병원" ,"와이즈24시 동물병원" ,"24시 OK동물병원" ,"24시 닥터멍 동물병원" ,"이안동물의학센터(청담점)" ,"라온펫동물의료센터" ,"카디오 동물의료병원" ,"다정동물병원" ,"24시 청담우리 동물병원" ,"래이동물의료센터" ,"오래오래동물병원" ,"대치성심동물병원" ,"가로수동물병원" ,"도곡종합동물병원" ,"봄동물병원" ,"이비치 동물치과병원" ,"아이윌24시동물병원" ,"수정동물병원" ,"마더스동물병원" ,"치료멍멍동물병원" ,"드림동물병원" ,"공항축산" ,"힐스타동물병원" ,"동물병원다온" ,"독립문동물병원" ,"파리스동물병원" ,"송정동물메디컬센터" ,"서울햇빛동물병원" ,"위례동물병원" ,"서울동물병원" ,"여울동물병원" ,"신풍동물종합병원" ,"바우동물병원" ,"보다듬 동물병원" ,"참 동물병원" ,"도림동물병원" ,"우리아이동물메디컬센터" ,"대방동물병원" ,"한국동물병원" ,"우신종합동물병원" ,"왈츠동물병원" ,"서울동물병원" ,"I-pet 동물병원" ,"Dr.수동물병원" ,"유석동물병원" ,"디오빌 동물병원" ,"마루동물병원" ,"애드펫동물병원" ,"온누리 종합동물병원" ,"(주)러브펫동물병원" ,"소망동물병원" ,"한가람동물의료센터" ,"미소로동물병원" ,"원동물병원" ,"담은동물병원" ,"도그플러스동물병원" ,"24시 글로리 동물병원" ,"영등포동물병원" ,"24시 서울 탑 동물병원" ,"캐나다동물병원" ,"금천 24시 K동물의료센터" ,"쿨펫동물병원" ,"대학동물병원" ,"베스트종합동물병원" ,"큐동물병원" ,"서울종합동물병원" ,"다나동물병원" ,"나래종합동물병원" ,"베이동물병원" ,"한사랑동물병원" ,"길음동물병원" ,"정릉동물병원" ,"미소동물병원" ,"이솝동물병원" ,"비비펫 동물병원" ,"행복한동물병원" ,"강북동물병원" ,"24시 북악동물병원" ,"드림동물병원" ,"중앙동물병원" ,"ZOO동물병원" ,"VIP 동물의료센터" ,"태양 동물병원" ,"도담도담동물병원" ,"쓰담쓰담 동물병원" ,"마로동물병원" ,"우리동물병원" ,"꿈의숲동물병원" ,"카카오 N 동물병원" ,"호담동물병원" ,"신영동물병원" ,"인왕동물병원" ,"북아현동물병원" ,"한솔동물병원" ,"라파엘종합동물병원" ,"가좌동물병원" ,"백년동물병원" ,"강북 24시 N 동물의료센터" ,"프란다스동물병원" ,"홍제동물병원" ,"마음을 나누는 동물병원" ,"A+동물병원" ,"가재울봉쥬르동물병원" ,"한스동물병원" ,"우리동물병원" ,"빛가온동물병원" ,"연희동물병원" ,"초콜릿종합동물병원" ,"예일동물병원" ,"두리틀동물병원" ,"용강동물병원" ,"청담동물병원" ,"서진동물병원" ,"햇살동물병원" ,"월드펫동물병원" ,"뉴욕종합동물병원" ,"디엔씨동물병원" ,"마포동물병원" ,"좋은동물병원" ,"서교동물병원" ,"박창석종합동물병원" ,"상암동물병원" ,"행복한 동물병원" ,"망원동물종합병원" ,"셀레네동물병원" ,"홍익동물종합병원" ,"C.T.종합동물병원" ,"동물사랑동물병원" ,"파티마동물병원" ,"마리동물병원" ,"웰케어동물병원" ,"웨스턴 동물의료센터" ,"동물메디컬센터w" ,"파크동물병원(animal. C)" ,"박효리군 동물병원" ,"도화동물병원" ,"힐링 24시 동물병원" ,"24시 공덕종합동물병원" ,"구림동물병원" ,"하이디 동물병원" ,"카라동물병원" ,"홍대 아이엠 중성화 진료 수술 센터" ,"굿모닝 동물병원" ,"예스 동물병원" ,"공덕 건강한 동물병원" ,"닥터M 동물병원" ,"동물병원 닥터K" ,"아프지말게 동물병원" ,"한아름동물병원" ,"워너비 동물병원" ,"광화문동물병원" ,"세인트필립 동물병원" ,"마곡숲동물병원" ,"24시 산들산들 동물병원" ,"한국동물암센터" ,"스마트동물병원" ,"원동물병원" ,"메세나 프렌즈 동물병원" ,"보담동물병원" ,"동물병원소풍" ,"유케어종합동물병원" ,"정겨운동물병원" ,"흑석24시동물병원" ,"상도힐링동물병원" ,"나무동물병원" ,"보라매웰종합동물병원" ,"우리아이동물병원" ,"이수동물병원" ,"굿파파 24시 반려동물건강검진센터" ,"지엔동물병원" ,"디아크동물종합병원" ,"동물은내친구" ,"하나사랑동물병원" ,"강남동물병원" ,"중앙동물병원" ,"모범동물병원" ,"종합동물병원 Pet Together" ,"나라동물병원" ,"다나동물병원" ,"사당동물병원" ,"서울동물심장병원" ,"올바른동물병원" ,"초이스동물병원" ,"위즈펫동물병원" ,"리베동물메디컬센터" ,"VIP동물의료센터 서초동작점" ,"피닉스동물병원" ,"아미칼동물병원" ,"연세동물병원" ,"포유동물병원" ,"대치동물의료센터" ,"신당햇살동물병원" ,"라온동물병원" ,"마곡나무 동물병원" ,"나을동물병원" ,"바다동물병원(Bada Animal Hospital)" ,"금호동물병원" ,"개와냥이동물병원" ,"다온동물병원" ,"파라곤동물병원" ,"디아크동물병원" ,"엘동물병원" ,"그린동물병원" ,"하나동물병원" ,"맑은 동물병원" ,"VIP동물의료센터" ,"페토브 동물병원" ,"애니펫동물병원" ,"헬로우동물병원" ,"정다운동물병원" ,"하나동물병원" ,"제연동물병원" ,"뉴월드동물병원" ,"심재웅동물병원" ,"페트로동물의료원" ,"아인스동물병원" ,"그랜드동물병원" ,"박철환동물병원" ,"봄봄동물병원" ,"애니케어동물병원" ,"온마음 동물메디컬센터" ,"푸른종합동물병원" ,"루이스동물병원" ,"주주동물병원" ,"공원옆동물병원" ,"안암동물병원" ,"마음동물병원" ,"다솜종합동물병원" ,"장평25시동물종합병원" ,"24시수동물메디컬센터" ,"케이나인종합동물병원" ,"로얄 도그앤캣 메디컬센터" ,"우리동생 동물병원" ,"이든동물의료센터" ,"둘레길동물병원" ,"H 동물병원" ,"아람동물병원" ,"제인동물병원" ,"오석헌동물병원" ,"신도림동물병원" ,"굿모닝 동물병원" ,"캥거루 동물병원" ,"아이러브펫동물병원(신도림점)" ,"해피동물병원" ,"해원종합동물병원" ,"쿨펫동물병원" ,"구로종합동물병원" ,"한샘종합동물병원" ,"푸른동물병원" ,"벨라동물병원" ,"금강종합동물병원" ,"라라동물병원" ,"안정택동물병원" ,"제일종합동물병원" ,"개명동물병원" ,"지구촌 동물종합병원" ,"사랑동물병원" ,"개봉동물병원" ,"24시 명동물메디컬센터" ,"오류동물병원" ,"푸른숲 동물병원" ,"조정연동물병원" ,"그린동물병원" ,"우리동물메디컬센터" ,"은행나무종합동물병원" ,"파랑새동물병원" ,"쿨펫동물병원" ,"금천동물병원" ,"노아동물병원" ,"도그플러스동물병원" ,"노아동물병원" ,"여의도동물병원은하점" ,"영국동물병원" ,"이재풍동물병원" ,"여의도동물병원대교점" ,"오주동물병원" ,"닥터스종합동물병원" ,"희망종합동물병원" ,"펫토피아동물병원" ,"김민재동물병원" ,"송파동물종합병원" ,"가락종합동물병원" ,"천호동물병원" ,"동물의왕국동물병원" ,"삼전동물메디컬센터" ,"박경호동물병원" ,"25시동물의료센터" ,"늘푸른동물병원" ,"가람종합동물병원" ,"위드펫종합동물병원" ,"호수동물병원" ,"송이종합동물병원" ,"펫가든동물병원" ,"씨밀레동물병원" ,"준동물병원" ,"에버펫 동물병원" ,"KYH웰빙동물병원" ,"잠실종합동물병원" ,"동산동물병원" ,"리오동물병원" ,"에코동물병원" ,"솔로몬동물병원" ,"두리동물병원" ,"한양종합동물병원" ,"스킨앤이어동물병원" ,"더 샵 동물병원" ,"쿨독동물병원" ,"잠실준25시동물병원" ,"신천 동물병원" ,"준동물병원" ,"닥터표동물병원" ,"연 동물병원" ,"이룸동물병원" ,"아미동물병원" ,"봄빛 동물병원" ,"서울동물의료원" ,"웰니스동물병원" ,"이리온 동물의료원" ,"갤러리아동물병원" ,"유앤동물의료원" ,"라임동물병원" ,"잠실베스트동물메디컬센터" ,"석촌동물병원" ,"하군이네 동물병원" ,"치치동물병원" ,"행복한 우리아이 동물병원" ,"24시잠실ON동물병원" ,"킴리동물병원" ,"리센츠 스타 동물병원" ,"문정탑동물병원" ,"해동물병원" ,"대치수동물병원" ,"꿈이크는 동물병원" ,"북악동물병원" ,"평창동물병원" ,"펫가든동물병원 월드타워점" ,"누리봄동물병원" ,"대학로동물병원" ,"올리브동물병원" ,"우리동물병원" ,"스머프동물병원" ,"김정복동물병원" ,"한얼동물병원" ,"월드펫동물병원" ,"효자동물병원" ,"메인동물메디컬센터" ,"불광동물병원" ,"응암동물병원" ,"늘푸른동물병원" ,"연서동물병원" ,"한마음동물병원" ,"금쪽같은내새끼 동물병원" ,"더독동물병원" ,"LOVE MY PET 동물병원" ,"오거리동물병원" ,"메디펫동물병원" ,"미래동물병원" ,"우신동물병원" ,"녹번동물병원" ,"한수24시동물병원" ,"예스동물병원" ,"도그원 동물의료센터" ,"야옹동물병원" ,"한빛동물병원" ,"24시스마트동물메디컬센터" ,"은평동물병원" ,"뉴타운동물병원" ,"로얄동물병원" ,"스머프동물병원" ,"Dr.윤24시동물병원" ,"신림종합동물병원" ,"러브펫종합동물병원" ,"해치동물병원" ,"다루동물병원" ,"우리동물병원" ,"도담동물병원" ,"넬 동물의료센터" ,"어울림동물병원" ,"송파스마일동물병원" ,"조은동물병원" ,"고려동물병원" ,"세계로동물병원" ,"늘푸른동물병원" ,"로잔동물병원" ,"예일동물병원" ,"행복한동물병원" ,"와우종합동물병원" ,"서진동물병원" ,"서울허브동물병원" ,"프렌즈동물병원" ,"비타민동물병원" ,"형제동물병원" ,"보라매동물병원" ,"서울대학교 수의과대학 동물병원" ,"한성동물병원" ,"관악동물종합병원" ,"세계로 고양이 전문의료센터" ,"나눔동물병원" ,"아이러브펫동물병원" ,"닥터킴 동물병원" ,"24시 스마트동물병원(신사본원)" ,"이수의과의원" ,"양지동물병원" ,"21세기동물병원" ,"서울동물병원" ,"독산동물병원" ,"효창동물병원" ,"남산동물병원" ,"바라봄동물병원" ,"정우동물병원" ,"한사랑동물병원" ,"청화종합동물병원" ,"금강동물병원" ,"펫토이동물병원" ,"열린동물종합병원" ,"한남동물병원" ,"원효종합동물병원" ,"엉클장동물병원" ,"아프리카동물병원" ,"라온동물병원" ,"퍼스동물병원" ,"이태원동물병원" ,"펫세상 동물병원" ,"동물병원 메이" ,"보광동물병원" ,"민트동물병원" ,"달래동물병원" ,"차오름동물병원" ,"펫동물병원" ,"(주)이상윤동물병원" ,"이윤세동물병원" ,"아띠동물의료센터" ,"좋아서하는 동물병원" ,"24시센트럴동물메디컬센터" ,"라임동물병원" ,"도담동물병원(출장진료전문 동물병원)" ,"옥수.수 동물병원" ,"한양동물메디컬센터" ,"서울숲동물병원" ,"성동동물종합병원" ,"24시LC동물의료센터" ,"오렌지동물병원" ,"평화와생명동물병원" ,"생명사랑동물병원" ,"SL동물병원" ,"함께하는동물병원" ,"기린동물병원" ,"24시왕십리조은동물병원" ,"텐즈힐링동물병원" ,"바른동물병원" ,"세진동물병원" ,"성수동물병원" ,"아지동물병원" ,"주연동물병원" ,"한빛동물병원" ,"스마트동물병원 강동암사점" ,"쥬라기동물병원" ,"진서동물병원" ,"숲속동물병원" ,"선릉동물병원" ,"진영동물병원" ,"왈츠동물병원" ,"도그플러스 동물병원" ,"태능동물병원" ,"한국동물메디컬센터(KAMC)" ,"면목동물병원" ,"행복이 있는 동물병원" ,"로얄동물메디컬센터" ,"닥터 아이펫 동물병원" ,"하니동물병원" ,"동부제일동물병원" ,"중랑차동물병원" ,"신내동물병원" ,"하스펫탈동물병원" ,"보람동물병원" ,"엔젤동물병원" ,"진정훈동물병원" ,"성지동물병원" ,"혜원동물병원" ,"홍상희동물병원" ,"드림동물병원" ,"키다리동물병원" ,"서울우유협동조합유우진료소" ,"방학동물외과센터" ,"에이원동물병원" ,"가람동물병원" ,"구름동물병원" ,"금란동물병원" ,"24시 동물응급의료센터" ,"오즈동물병원" ,"독산온동물병원" ,"신촌 동물병원" ,"송파바로동물병원" ,"참좋은동물병원" ,"허브동물병원" ,"이로동물병원" ,"스테이동물병원" ,"스마트동물병원" ,"서초M동물의료센터" ,"압구정동물병원" ,"연두동물병원" ,"날으는 동물병원" ,"나은동물병원" ,"아크리스동물의료센터" ,"더케이동물병원" ,"송파원동물병원" ,"고덕24시 동물병원" ,"안단테 동물병원" ,"닥터그레이동물병원" ,"올스타동물의료센터" ,"광진동물의료센터" ,"건국대학교 부속 동물병원" ,"방주종합동물병원" ,"용마동물병원" ,"피카소동물병원" ,"동서울동물병원" ,"중곡동물병원" ,"시민동물병원" ,"킴스동물종합병원" ,"아차산동물병원" ,"신창동물병원" ,"퓨리나동물병원" ,"수동물병원" ,"이다종합동물병원" ,"태일동물종합병원" ,"화신종합동물병원" ,"프라임동물병원" ,"쥬라기동물병원" ,"한빛동물병원" ,"방학동물병원" ,"현대종합동물병원" ,"동물병원 WITH" ,"사랑해요동물병원" ,"도담동물병원" ,"365동물병원" ,"삼성동물종합병원" ,"가나동물병원" ,"쿨펫동물병원" ,"행복한동물병원" ,"유현동물병원" ,"중앙동물병원" ,"별난동물병원" ,"동물병원 위드" ,"애니케어 동물병원 수유점" ,"솔샘동물병원" ,"사랑동물병원" ,"하비동물병원" ,"현대종합동물병원" ,"사랑의동물병원" ,"삼양동물병원" ,"동물을사랑하는사람들" ,"대형동물병원" ,"수 동물병원" ,"창문동물병원" ,"호 동물병원" ,"위즈동물병원" ,"삼성동물병원" ,"강북동물병원" ,"보노보노동물병원" ,"홈펫동물병원" ,"오금동물병원" ,"SKY동물병원" ,"봉식동물병원" ,"스마트 동물병원" ,"아프리카동물병원" ,"황하동물병원" ,"박동물병원" ,"시온동물병원" ,"용봉동물병원" ,"쿠키동물병원" ,"염창제일동물병원" ,"강서동물병원" ,"서울플러스종합동물병원" ,"발산종합동물병원" ,"대한동물병원" ,"하나동물병원" ,"고득영동물병원" ,"해맑은동물병원" ,"우장동물병원" ,"미래동물병원" ,"다나동물병원" ,"호서동물의료센터" ,"세인트동물병원" ,"굿모닝동물병원" ,"24시아프리카동물메디컬센터" ,"와우동물병원" ,"서울축산농협동물병원" ,"서서울동물병원" ,"도그플러스 동물병원" ,"스누피동물병원" ,"한마음동물병원" ,"파스텔동물병원" ,"24시 안박동물병원" ,"쿨펫 동물병원" ,"오즈동물병원" ,"가양쿨펫동물병원" ,"강서YD동물의료센터" ,"화곡동물병원" ,"스마일동물병원" ,"세명 동물병원" ,"광장동물의료센터" ,"젠틀리동물병원" ,"두암동물병원" ,"조아동물병원" ,"미소동물의료센터" ,"마리스동물의료센터" ,"프렌즈동물병원" ,"신길동동물병원 온" ,"해맑은동물병원" ,"24시 시유동물메디컬센터" ,"강동24시 SKY 동물의료센터" ,"고려종합동물병원" ,"서정동물병원" ,"캐슬동물종합병원" ,"트윈스동물병원" ,"반디동물병원" ,"로이동물병원" ,"돌봄동물병원" ,"압구정메이트동물병원" ,"더힐동물의료센터" ,"보람동물병원" ,"나래동물병원" ,"애플동물병원" ,"24시 애니동물병원" ,"에이블 동물병원" ,"로엘동물병원" ,"중앙동물메디컬센터" ,"노룬산동물병원" ,"에디슨동물병원" ,"아라우나동물병원" ,"동물병원 베를린" ,"굿모닝동물병원" ,"혜민동물병원" ,"준동물병원" ,"다온동물병원" ,"나루동물병원" ,"드림펫 동물병원" ,"자양동물병원" ,"서울어린이대공원동물병원" ,"서울동물병원" ,"청담눈초롱안과동물병원" ,"스마트동물병원 성북길음점" ,"넥스펫동물병원" ,"펫365동물병원" ,"페츠비동물병원" ,"바른동물병원" ,"마포 키다리 동물병원" ,"경인동물의료센터" ,"암사동물병원" ,"앙리동물병원" ,"길종합동물병원" ,"피카소동물병원" ,"쥬라기동물병원" ,"광나루동물병원" ,"가나동물병원" ,"다래동물병원" ,"사랑이있는동물병원" ,"GD동물병원" ,"두루동물병원" ,"세종동물병원" ,"둔촌동물병원" ,"강동동물병원" ,"정동물병원" ,"현대종합동물병원" ,"김태화동물병원" ,"해태동물병원" ,"CH동물병원" ,"펫클럽동물병원" ,"열린24시동물병원" ,"박형우동물병원" ,"성내동물병원" ,"늘사랑동물병원" ,"서울동물메디컬센터" ,"석동물병원" ,"비타민동물병원" ,"Dr.베토벤동물병원" ,"아프리카동물병원" ,"한나동물병원" ,"미드미동물의료센터" ,"시온동물병원" ,"이황 동물병원" ,"내품에동물병원" ,"위즈펫동물병원 강동점" ,"우리덕구동물병원" ,"고덕 고래힐동물병원" ,"Dr.주 동물병원" ,"24시 수유 바른펫 동물의료센터" ,"와우 동물병원" ,"강앤정 동물병원" ,"24시 SNC 동물메디컬센터" ,"이n김동물병원" ,"가든펫동물병원"];
+					var address = ["서울 중구 동호로 204", "서울 중구 퇴계로 226", "서울 중구 다산로 107", "서울 중구 퇴계로 227-1", "서울 중구 다산로 175", "서울 중구 퇴계로 254-1", "서울 강남구 압구정로 108", "서울 중구 다산로 32", "서울 서초구 신반포로 162", "서울 중구 동호로 178", "서울 양천구 신목로 59", "서울 양천구 중앙로 295", "서울 은평구 증산서길 132", "서울 중구 다산로36길 83", "서울 양천구 등촌로 160", "서울 양천구 오목로 45", "서울 중구 청파로 426", "서울 중구 청계천로 400", "서울 중구 다산로 32", "서울 양천구 신정동 1020-17", "서울 양천구 오목로 198-1", "서울 양천구 남부순환로 347", "서울 양천구 목동 613-8", "서울 양천구 목동중앙본로 10", "서울 양천구 목동 657-21", "서울 양천구 등촌로 16", "서울 양천구 중앙로 291", "서울 양천구 목동남로4길 6-11", "서울 양천구 목동동로8길 7", "서울 양천구 목동중앙로 43", "서울 양천구 목동서로 35", "서울 양천구 지양로 52", "서울 양천구 공항대로 636", "서울 양천구 오목로 299", "서울 양천구 신월로 179", "서울 양천구 목동로 161", "서울 양천구 신월동 446-4", "서울 양천구 목동동로 309", "서울 양천구 신목로 78", "서울 양천구 목동중앙북로 37", "서울 양천구 남부순환로 421", "서울 양천구 목동서로 170", "서울 양천구 목동중앙본로 100", "서울 양천구 목동서로 57", "서울 양천구 목동로 181", "서울 양천구 신정로 312", "서울 양천구 등촌로 58", "서울 양천구 월정로 137", "서울 양천구 공항대로 552", "서울 양천구 목동중앙서로 42", "서울 노원구 노원로1길 9", "서울 송파구 양산로4길 13", "서울 동대문구 답십리로 293", "서울 강남구 광평로 196", "서울 성동구 성수일로 33", "서울 강동구 양재대로 1299", "서울 강서구 양천로57길 10-20", "서울 강남구 도곡로 510", "서울 강남구 광평로10길 50", "서울 양천구 신월로 320", "서울 중랑구 망우로 241", "서울 동대문구 이문로 136", "서울 노원구 덕릉로 665-1", "서울 노원구 덕릉로 738", "서울 노원구 동일로 1649", "서울 노원구 한글비석로8길 16", "서울 강서구 마곡중앙로 36", "서울 마포구 토정로 149", "서울 노원구 노원로 540", "서울 노원구 동일로207길 17", "서울 노원구 한글비석로 272", "서울 노원구 노원로34길 76", "서울 노원구 동일로 1280", "서울 노원구 공릉로 168", "서울 노원구 동일로192길 87", "서울 노원구 덕릉로 810-1", "서울 노원구 동일로 1356", "서울 노원구 동일로204가길 12", "서울 노원구 동일로 1530", "서울 노원구 동일로 1689", "서울 노원구 월계로45길 28", "서울 노원구 월계동 333-1", "서울 노원구 화랑로 473", "서울 노원구 동일로203가길 29", "서울 노원구 동일로 1370", "서울 노원구 한글비석로52길 18", "서울 노원구 화랑로 349", "서울 노원구 중계로 233", "서울 노원구 섬밭로 258", "서울 노원구 동일로 1622", "서울 노원구 노원로 330", "서울 노원구 동일로 1104", "서울 노원구 노원로 456", "서울 서초구 방배로34길 12", "서울 노원구 마들로3길 15", "서울 서초구 강남대로 631", "서울 노원구 한글비석로 245", "서울 노원구 동일로 1051", "서울 서초구 방배로 232", "서울 서초구 주흥길 3", "서울 서초구 방배로 204", "서울 서초구 서초대로 108", "서울 서초구 강남대로 525-3", "서울 서초구 반포동 1-8", "서울 서초구 사임당로 139", "서울 서초구 서초중앙로 245", "서울 서초구 양재동 2-43", "서울 서초구 효령로57길 4", "서울 서초구 방배동 790-27", "서울 서초구 신반포로 257", "서울 서초구 효령로 200", "서울 서초구 마방로6길 18", "서울 서초구 방배동 984-1", "서울 서초구 나루터로 37", "서울 서초구 동산로 66", "서울 서초구 효령로 384", "서울 서초구 서초대로 325", "서울 서초구 바우뫼로7길 8", "서울 서초구 반포동 91-10", "서울 서초구 잠원로 24", "서울 서초구 서초대로4길 4", "서울 서초구 잠원로 221", "서울 서초구 방배로 118", "서울 서초구 사평대로45길 10-25", "서울 서초구 효령로 100", "서울 서초구 반포대로 287", "서울 서초구 매헌로 16", "서울 서초구 서초중앙로 238", "서울 서초구 헌릉로8길 10-12", "서울 서초구 사임당로 97", "서울 서초구 태봉로2길 30", "서울 서초구 동작대로 166", "서울 서초구 방배로 269", "서울 서초구 효령로 229", "서울 서초구 반포대로 45", "서울 서초구 서초대로 124", "서울 강남구 도산대로46길 16", "서울 서초구 신반포로 49", "서울 강남구 일원로 45", "서울 강남구 선릉로 42", "서울 강남구 강남대로118길 47", "서울 강남구 개포로 260", "서울 강남구 역삼로 406", "서울 강남구 개포로 223", "서울 강남구 일원로3길 38", "서울 강남구 남부순환로 2737", "서울 강남구 선릉로 622", "서울 강남구 학동로 324", "서울 강남구 선릉로 412", "서울 강남구 언주로 527", "서울 강남구 도산대로 514", "서울 강남구 학동로 165", "서울 강남구 논현로10길 14", "서울 강남구 학동로6길 18", "서울 강남구 선릉로 620", "서울 강남구 논현로 621", "서울 강남구 역삼로 138", "서울 강남구 도곡로 189", "서울 강남구 개포로 512", "서울 강남구 봉은사로 205", "서울 강남구 삼성로 573", "서울 강남구 논현로 70", "서울 강남구 선릉로 418", "서울 강남구 도산대로 138", "서울 강남구 역삼로 134", "서울 강남구 학동로 138", "서울 강남구 논현로67길 56", "서울 강남구 도산대로 445", "서울 강남구 역삼로 235", "서울 강남구 논현로86길 22", "서울 강남구 학동로6길 7", "서울 강남구 선릉로 338", "서울 강남구 논현로 515", "서울 강남구 선릉로 806", "서울 강남구 남부순환로 2912", "서울 강남구 강남대로118길 60", "서울 강남구 학동로20길 39", "서울 강남구 삼성로 614", "서울 강남구 남부순환로 2911-1", "서울 강남구 도곡로37길 20", "서울 강남구 남부순환로 2921", "서울 강남구 압구정로 134", "서울 강남구 언주로 314", "서울 강남구 도곡로 115", "서울 강남구 선릉로 756", "서울 강남구 학동로 437", "서울 강남구 일원동 719", "서울 강남구 헌릉로 569", "서울 강남구 도산대로 309", "서울 강남구 역삼로 234", "서울 강서구 개화동로29길 15", "서울 강남구 자곡로 202", "서울 강남구 도곡로 174", "서울 서대문구 통일로 171-1", "서울 양천구 목동서로 100", "서울 강서구 공항대로 39", "서울 은평구 진관2로 67", "서울 송파구 위례광장로 136", "서울 강남구 역삼로 412", "서울 서초구 방배로 28", "서울 영등포구 신길로 70", "서울 송파구 올림픽로35길 112", "서울 강서구 수명로 82", "서울 영등포구 영등포로76길 1", "서울 영등포구 도신로 106", "서울 강서구 공항대로 284", "서울 영등포구 여의대방로35길 1", "서울 영등포구 여의대방로 201", "서울 영등포구 신길동 232", "서울 영등포구 가마산로 324", "서울 영등포구 영중로27길 10", "서울 영등포구 여의동로3길 10", "서울 영등포구 국제금융로 79", "서울 영등포구 여의대방로 11", "서울 영등포구 당산로 222", "서울 영등포구 문래동3가 55-5", "서울 영등포구 선유서로 67", "서울 영등포구 도신로 186", "서울 영등포구 영중로 15", "서울 마포구 신촌로 258", "서울 영등포구 영등포로 387", "서울 영등포구 영신로 238", "서울 강남구 역삼로 409", "서울 은평구 통일로 796", "서울 영등포구 당산로 42", "서울 금천구 시흥대로 483", "서울 영등포구 영등포로 131-2", "서울 양천구 중앙로 237", "서울 동작구 상도로 111", "서울 금천구 시흥대로 251", "서울 광진구 아차산로 272", "서울 성북구 화랑로 309", "서울 성북구 동소문로 36", "서울 성북구 장위로 81", "서울 성북구 보문로 137", "서울 성북구 화랑로 301", "서울 성북구 동소문로 66", "서울 용산구 이촌로 248", "서울 성북구 성북로 27", "서울 성북구 동소문로 248", "서울 성북구 보국문로 4", "서울 성북구 종암로19길 7", "서울 성북구 보국문로 70", "서울 성북구 화랑로 91", "서울 성북구 돌곶이로 91", "서울 성북구 종암로 65", "서울 성북구 정릉로 272-9", "서울 성북구 동소문로 74", "서울 성북구 돌곶이로 56", "서울 성북구 보국문로 13-1", "서울 성북구 동소문로 73", "서울 성북구 돌곶이로 31", "서울 성북구 화랑로 76", "서울 성북구 종암로 113", "서울 성북구 동소문로44길 43", "서울 성북구 삼양로 84", "서울 성북구 돌곶이로 205", "서울 성북구 길음로 33", "서울 성북구 동소문로 302", "서울 서대문구 통일로 489", "서울 서대문구 통일로 405", "서울 서대문구 신촌로 289-1", "서울 서대문구 통일로 392", "서울 서대문구 연희로 132", "서울 서대문구 응암로 77", "서울 서대문구 가좌로 104", "서울 성북구 삼양로4길 3", "서울 서대문구 거북골로 120", "서울 서대문구 통일로 463", "서울 서대문구 북아현로 8-2", "서울 서대문구 연희로 114", "서울 서대문구 거북골로 178", "서울 서대문구 증가로 111", "서울 서대문구 통일로 197", "서울 서대문구 통일로 375", "서울 서대문구 연희로25길 101", "서울 서대문구 응암로 117", "서울 서대문구 거북골로 13", "서울 서대문구 응암로 66", "서울 마포구 대흥로 48", "서울 송파구 토성로 30-1", "서울 마포구 동교동 185-1", "서울 서대문구 수색로 56", "서울 마포구 신촌로 248", "서울 마포구 서교동 395-44", "서울 마포구 신촌로 154", "서울 마포구 백범로 110", "서울 광진구 자양로 246", "서울 마포구 망원동 415-33", "서울 마포구 도화길 42", "서울 마포구 월드컵북로 336", "서울 마포구 월드컵북로 224", "서울 마포구 월드컵로 65", "서울 마포구 상수동 310-1", "서울 마포구 합정동 411-18", "서울 마포구 만리재로 74", "서울 마포구 월드컵로 64", "서울 마포구 동교동 179-1", "서울 마포구 신촌로 16", "서울 마포구 월드컵북로 27", "서울 마포구 신촌로 114", "서울 마포구 월드컵로 46", "서울 마포구 마포대로 173", "서울 마포구 포은로 64", "서울 마포구 삼개로 28", "서울 마포구 백범로 205", "서울 마포구 백범로 130", "서울 마포구 성산동 627-2", "서울 마포구 독막로 38", "서울 마포구 잔다리로 122", "서울 마포구 양화로 122", "서울 마포구 독막로 295", "서울 마포구 마포대로 195", "서울 마포구 만리재로 15", "서울 마포구 마포대로 195", "서울 마포구 월드컵북로 347", "서울 마포구 상암산로1길 24", "서울 마포구 독막로 153", "서울 마포구 동교로 193", "서울 종로구 사직로9길 6-1", "서울 동작구 남부순환로267길 5", "서울 강서구 강서로 471", "서울 마포구 마포대로16길 7", "서울 노원구 노원로 456", "서울 동대문구 한천로 164", "서울 동작구 사당로 180", "서울 마포구 양화로 45", "서울 중랑구 용마산로 434", "서울 성동구 금호로 173", "서울 동작구 상도로 214", "서울 동작구 상도로 315", "서울 동작구 현충로 92", "서울 동작구 상도로 353", "서울 동작구 흑석한강로 2", "서울 동작구 상도로 16", "서울 동작구 상도로 262", "서울 동작구 사당로23나길 30", "서울 동작구 사당로 289", "서울 동작구 상도로 195", "서울 동작구 장승배기로27길 18", "서울 동작구 사당로 252", "서울 동작구 상도로 171", "서울 동작구 여의대방로 284", "서울 동작구 흑석로 120", "서울 동작구 사당로 229", "서울 동작구 양녕로 184-1", "서울 동작구 사당로 284", "서울 동작구 동작대로 47", "서울 동작구 남부순환로 2051", "서울 강남구 언주로 542", "서울 강동구 올림픽로 787", "서울 강북구 삼양로117길 5", "서울 송파구 올림픽로35가길 16", "서울 양천구 오목로 280", "서울 서초구 동작대로 36", "서울 동작구 상도로 43", "서울 강남구 남부순환로 2936", "서울 관악구 봉천로 516", "서울 성북구 오패산로 22", "서울 강남구 도곡로 439", "서울 성동구 행당로1길 23", "서울 마포구 월드컵북로 151", "서울 강서구 마곡중앙1로 72", "서울 동작구 사당로 196", "서울 용산구 서빙고로 67", "서울 성동구 금호로 105", "서울 은평구 통일로 727-5", "서울 양천구 중앙로 230", "서울 광진구 광나루로 361", "서울 동대문구 홍릉로 64-1", "서울 동대문구 고산자로 393-1", "서울 동대문구 정릉천동로 58", "서울 양천구 목동서로 387", "서울 동대문구 청계천로 417", "서울 동대문구 답십리로 298", "서울 양천구 목동동로 130", "서울 동대문구 청량리동 520-44", "서울 서대문구 연희로 178", "서울 동대문구 제기동 146-11", "서울 동대문구 망우로 66", "서울 동대문구 답십리로 77", "서울 동대문구 천호대로 221", "서울 동대문구 망우로 120", "서울 동대문구 장한로 77", "서울 동대문구 장한로 44", "서울 동대문구 답십리동 53-6", "서울 동대문구 장안동 100-8", "서울 동대문구 회기로18길 46", "서울 동대문구 이문동 324-3", "서울 송파구 오금로 473", "서울 동대문구 홍릉로 35", "서울 강남구 테헤란로64길 13", "서울 동대문구 사가정로 121", "서울 양천구 목동서로 349", "서울 동대문구 안암로 40", "서울 구로구 오리로 1271", "서울 동대문구 전농로 15-3", "서울 동대문구 장한로 139", "서울 영등포구 영등포로 85-1", "서울 구로구 개봉로 40", "서울 광진구 능동로 49", "서울 마포구 월드컵북로12길 22", "서울 영등포구 양평로 5", "서울 은평구 연서로 317", "서울 강북구 삼양로27길 43", "서울 영등포구 도신로 225-1", "서울 성동구 뚝섬로 395", "서울 성동구 매봉길 13", "서울 구로구 경인로 661", "서울 구로구 개봉로 121", "서울 구로구 오류로 55", "서울 구로구 경인로 661", "서울 구로구 중앙로 67", "서울 구로구 구일로 110", "인천 남구 경인로 482", "서울 구로구 경인로 638", "인천 남구 경인로 350", "서울 구로구 구로동로 111-1", "서울 구로구 구로중앙로34길 30", "서울 구로구 경인로 196", "서울 구로구 도림로 72", "서울 구로구 천왕로 106", "서울 금천구 독산로 58", "서울 구로구 개봉로 50", "서울 구로구 구로중앙로32길 14", "서울 구로구 도림로 98", "서울 구로구 고척로 157", "서울 구로구 남부순환로 775", "서울 구로구 경인로 234", "서울 마포구 월드컵로 98", "서울 금천구 금하로 679", "서울 금천구 독산로 272", "서울 금천구 남부순환로 1386", "서울 금천구 금하로 694", "서울 금천구 시흥대로 276", "서울 금천구 두산로 71", "서울 금천구 독산로 188", "서울 금천구 금하로 745", "서울 금천구 시흥대로 391", "서울 송파구 오금로 498", "서울 영등포구 국제금융로 108", "서울 송파구 동남로18길 23", "서울 송파구 오금로35길 44", "서울 영등포구 여의대방로 417", "서울 송파구 마천로 264", "서울 노원구 월계로 336", "서울 송파구 올림픽로 88", "서울 송파구 오금로 203", "서울 송파구 동남로 318", "서울 송파구 송파대로 378", "서울 송파구 오금로 247", "서울 송파구 올림픽로 611", "서울 송파구 마천로 263", "서울 송파구 삼학사로 75", "서울 송파구 올림픽로 362", "서울 송파구 삼전로 80", "서울 송파구 마천로5길 16", "서울 송파구 오금로 494", "서울 송파구 백제고분로 161", "서울 송파구 오금로 126", "서울 송파구 송이로 29-1", "서울 송파구 중대로 80", "서울 송파구 올림픽로47길 20", "서울 송파구 중대로 320", "서울 송파구 오금로 422", "서울 송파구 석촌호수로 112", "서울 송파구 송파대로 388", "서울 송파구 백제고분로 270", "서울 송파구 올림픽로 435", "서울 송파구 동남로 161", "서울 송파구 마천로 76", "서울 송파구 성내천로 229", "서울 송파구 가락로 162", "서울 송파구 송파대로 474", "서울 송파구 오금로 45", "서울 송파구 중대로9길 48", "서울 송파구 석촌호수로 138", "서울 송파구 석촌호수로 94", "서울 송파구 위례성대로 178", "서울 강동구 올림픽로 566", "서울 송파구 올림픽로 119", "서울 송파구 삼학사로 44", "서울 송파구 백제고분로 131", "서울 송파구 송이로 171", "서울 송파구 백제고분로 195", "서울 송파구 충민로 10", "서울 송파구 오금로 182", "서울 송파구 올림픽로 212", "서울 송파구 양재대로 1148", "서울 송파구 가락로 258", "서울 송파구 삼학사로 88", "서울 송파구 송파대로 441", "서울 송파구 송이로32길 19", "서울 송파구 충민로2길 36", "서울 송파구 석촌호수로 146", "서울 송파구 올림픽로 76", "서울 송파구 올림픽로 399", "서울 송파구 올림픽로 145", "서울 송파구 송이로 186", "서울 종로구 지봉로 53-1", "서울 강남구 삼성로 212", "서울 송파구 백제고분로 115", "서울 종로구 자하문로 293", "서울 종로구 평창문화로 31", "서울 송파구 올림픽로 300", "서울 종로구 사직로12길 2", "서울 종로구 창경궁로 261", "서울 종로구 자하문로 305", "서울 종로구 지봉로 96-3", "서울 은평구 백련산로 143", "서울 은평구 통일로 879", "서울 은평구 응암로 226", "서울 종로구 진흥로 473", "서울 종로구 자하문로 66-2", "서울 노원구 동일로 1025-1", "서울 은평구 불광로 37", "서울 은평구 응암로 261", "서울 은평구 은평로 29", "서울 은평구 연서로 162", "서울 은평구 갈현로 35", "서울 은평구 연서로 185", "서울 은평구 서오릉로 140", "서울 은평구 은평로 208", "서울 은평구 가좌로 239", "서울 은평구 통일로 885", "서울 은평구 서오릉로 192", "서울 은평구 연서로 72", "서울 은평구 통일로 697", "서울 은평구 응암로 319", "서울 은평구 통일로 691", "서울 은평구 연서로29길 24", "서울 은평구 응암로 286", "서울 은평구 진관4로 87", "서울 은평구 은평로 93", "서울 은평구 서오릉로 80", "서울 은평구 진관3로 70", "서울 은평구 연서로 137", "서울 은평구 백련산로 145", "서울 은평구 통일로 817", "서울 관악구 신림로 157", "서울 관악구 남부순환로 1451", "서울 성동구 독서당로 434", "서울 은평구 불광로 60", "서울 광진구 뚝섬로 636", "서울 은평구 역말로 7", "서울 성북구 오패산로 75-1", "서울 서대문구 가재울미래로 2", "서울 송파구 새말로5길 17", "서울 은평구 수색로 217", "서울 관악구 시흥대로 552-1", "서울 관악구 남부순환로 1497", "서울 관악구 난곡로 223-1", "서울 관악구 관악로29길 3", "서울 관악구 봉천로 232", "서울 관악구 은천로 121", "서울 관악구 난곡로 247", "서울 관악구 봉천로 236", "서울 관악구 남부순환로 1811", "서울 관악구 관악로 223", "서울 관악구 인헌6길 8", "서울 관악구 남부순환로 1745-1", "서울 관악구 보라매로 2", "서울 관악구 관악로 1", "서울 관악구 신림로 265", "서울 관악구 남부순환로 1859", "서울 관악구 남부순환로 1497", "서울 관악구 남부순환로 1964", "서울 관악구 과천대로 909", "서울 관악구 은천로 97", "서울 강남구 도산대로 213", "서울 용산구 후암로 13-2", "서울 관악구 남부순환로 1633", "서울 용산구 보광로 46", "서울 관악구 신림로 233", "서울 관악구 남부순환로 1377", "서울 용산구 백범로 293", "서울 용산구 후암로 51", "서울 성동구 왕십리로 410", "서울 관악구 신림로 138", "서울 용산구 신흥로 36-1", "서울 용산구 보광로 90", "서울 용산구 이촌로 303", "서울 용산구 대사관로 32", "서울 용산구 원효로 171", "서울 용산구 대사관로24길 28", "서울 용산구 원효로 187", "서울 용산구 백범로 341", "서울 용산구 후암로 32", "서울 용산구 회나무로13길 6", "서울 용산구 신흥로 54", "서울 용산구 녹사평대로 210", "서울 용산구 한강대로23길 55", "서울 용산구 대사관로 41", "서울 용산구 보광로 22-1", "서울 용산구 원효로 51", "서울 용산구 한남대로20길 7", "서울 용산구 효창원로 14", "서울 용산구 백범로 285", "서울 용산구 이촌로 248", "서울 성동구 행당로 76", "서울 동대문구 사가정로 51", "서울 용산구 백범로 341", "서울 성동구 고산자로 207", "서울 성동구 무학로 16", "서울 성동구 독서당로59길 84", "서울 성동구 독서당로40길 39", "서울 성동구 왕십리로 282", "서울 성동구 뚝섬로 386", "서울 성동구 아차산로 75", "서울 성동구 천호대로 288", "서울 성동구 행당로8길 41-2", "서울 성동구 행당로 76", "서울 성동구 독서당로 206", "서울 성동구 왕십리로 340", "서울 성동구 독서당로 200", "서울 성동구 마장로 296", "서울 성동구 왕십리로 347", "서울 성동구 마장로 137", "서울 성동구 독서당로 270", "서울 중랑구 망우로 396", "서울 성동구 왕십리로 100", "서울 성동구 독서당로 289", "서울 중랑구 면목로 273", "서울 성동구 금호산길 63-1", "서울 강동구 고덕로 110", "서울 중랑구 신내로 211", "서울 중랑구 신내로10길 7", "서울 중랑구 겸재로 214", "서울 강남구 선릉로 528", "서울 중랑구 동일로96길 33", "서울 중랑구 신내로 45", "서울 중랑구 신내로 201", "서울 중랑구 동일로 920", "서울 중랑구 겸재로 165", "서울 중랑구 사가정로 373", "서울 중랑구 봉화산로 232", "서울 중랑구 망우로 247", "서울 중랑구 망우로 353", "서울 중랑구 신내로 225", "서울 중랑구 망우로 266", "서울 중랑구 중랑천로 81", "서울 중랑구 봉화산로 103", "서울 중랑구 면목로 437", "서울 중랑구 면목로 269", "서울 중랑구 겸재로 187", "서울 중랑구 동일로 777", "서울 중랑구 면목로 311", "서울 중랑구 면목로 341", "서울 중랑구 동일로 899", "서울 구로구 중앙로8길 11", "서울 송파구 새말로 62", "서울 중랑구 중랑천로 71", "서울 도봉구 도봉로 723", "서울 서초구 반포대로 89", "서울 강동구 성내로 36", "서울 양천구 신정이펜2로 22", "서울 중랑구 용마산로 532", "서울 중랑구 망우로 247", "서울 서대문구 가재울미래로 2", "서울 금천구 독산로 225", "서울 마포구 신촌로 108", "서울 송파구 새말로 125", "서울 은평구 백련산로 29", "서울 구로구 구일로10길 27", "서울 관악구 남부순환로 1678", "서울 성동구 옥수동 526", "서울 노원구 노원로 470", "서울 서초구 사임당로 78", "서울 강남구 압구정로 224", "서울 광진구 광나루로 524", "서울 마포구 마포대로11길 35", "서울 강남구 개포로 243", "서울 강남구 봉은사로104길 10", "서울 동대문구 답십리로 140", "서울 송파구 백제고분로 432", "서울 강동구 동남로 877", "서울 강동구 양재대로 1601", "서울 강남구 언주로30길 21", "서울 강서구 가로공원로 198", "서울 광진구 광나루로 507", "서울 광진구 능동로 120", "서울 광진구 능동로 334", "서울 광진구 용마산로 66", "서울 광진구 광나루로 392-1", "서울 광진구 아차산로 493", "서울 광진구 긴고랑로 47", "서울 광진구 자양로 94", "서울 광진구 면목로 117", "서울 광진구 천호대로 663", "서울 도봉구 덕릉로 230", "서울 도봉구 도봉로 469", "서울 광진구 광나루로 341", "서울 광진구 뚝섬로 504", "서울 도봉구 해등로 184", "서울 도봉구 도당로 63", "서울 광진구 아차산로 451", "서울 광진구 광나루로 601", "서울 도봉구 덕릉로 256", "서울 도봉구 도봉로 723", "서울 도봉구 도봉로 669", "서울 도봉구 도봉로 568", "서울 도봉구 시루봉로 59", "서울 도봉구 도봉로 875", "서울 도봉구 방학로 54", "서울 도봉구 도봉로 499", "서울 도봉구 방학로 162", "서울 도봉구 마들로 645", "서울 도봉구 도봉로 618", "서울 도봉구 방학로 187", "서울 강북구 도봉로 88", "서울 도봉구 도봉로 603", "서울 강북구 덕릉로 79", "서울 강북구 삼양로 499", "서울 강북구 솔샘로 267", "서울 강북구 삼양로123길 6-12", "서울 도봉구 노해로65길 14", "서울 강북구 노해로 94", "서울 강북구 솔샘로 174", "서울 강북구 삼양로 183-1", "서울 강북구 도봉로98길 56", "서울 강북구 삼양로 504", "서울 강북구 솔샘로 220", "서울 강북구 월계로 35", "서울 강북구 월계로 53", "서울 강북구 도봉로 202", "서울 강북구 삼양로19길 25", "서울 강북구 오현로 194", "서울 강북구 덕릉로 39", "서울 강북구 도봉로 110-1", "서울 송파구 오금로 306", "서울 강서구 양천로 72", "서울 강북구 삼양로 252", "서울 강북구 솔샘로 203-2", "서울 영등포구 시흥대로 647", "서울 강서구 금낭화로 52", "서울 강서구 강서로 294", "서울 강서구 까치산로 74", "서울 강서구 강서로17길 20", "서울 강북구 삼양로27길 19", "서울 강서구 염창동 244-26", "서울 강서구 곰달래로15길 46", "서울 강서구 등촌로 55", "서울 강서구 강서로 237", "서울 강서구 화곡로 205", "서울 강서구 금낭화로 109", "서울 강서구 곰달래로 199", "서울 강서구 양천로57길 10-20", "서울 강서구 화곡로 143", "서울 강서구 강서로 45", "서울 강서구 강서로 254", "서울 강서구 강서로 420", "서울 강서구 강서로 36", "서울 강서구 방화대로47가길 7", "서울 강서구 공항대로 335", "서울 강서구 방화대로47가길 7", "서울 강서구 양천로 574", "서울 강서구 양천로 667", "서울 강서구 화곡로 398", "서울 강서구 강서로 313", "서울 강서구 강서로18길 17", "서울 강서구 화곡로 112", "서울 강서구 양천로 510", "서울 강서구 양천로 559", "서울 강서구 내발산동 722-15", "서울 강서구 양천로 431", "서울 강서구 화곡로 371", "서울 강서구 까치산로 80", "서울 강서구 수명로 74", "서울 강서구 강서로17길 52", "서울 광진구 아차산로 608", "서울 강서구 마곡중앙5로 81", "서울 양천구 목동중앙북로 73", "서울 금천구 금하로1라길 35", "서울 강서구 강서로 215", "서울 강동구 올림픽로 820", "서울 강북구 오패산로 160", "서울 영등포구 신풍로 77", "서울 광진구 뚝섬로 670", "서울 용산구 이촌로64길 24", "서울 강동구 천호대로 1122", "서울 강남구 선릉로 225", "서울 노원구 동일로 1626", "서울 양천구 목동남로2길 21", "서울 도봉구 도봉로110다길 20", "서울 광진구 능동로 18", "서울 성북구 아리랑로 27", "서울 강동구 고덕로 133", "서울 강남구 압구정로 332", "서울 용산구 독서당로 81-1", "서울 광진구 군자로 84", "서울 광진구 능동로 283", "서울 광진구 천호대로 642-1", "서울 성북구 보문로 99", "서울 서초구 바우뫼로 211", "서울 광진구 뚝섬로 622-1", "서울 강남구 봉은사로 315", "서울 광진구 뚝섬로 462", "서울 광진구 아차산로 530", "서울 광진구 뚝섬로 548", "서울 관악구 남부순환로 1531", "서울 강남구 학동로 413", "서울 광진구 자양로15길 48", "서울 광진구 뚝섬로 541", "서울 광진구 면목로 142", "서울 광진구 아차산로 537-17", "서울 광진구 능동로 379", "서울 광진구 뚝섬로52길 4", "서울 광진구 능동로 216", "서울 광진구 천호대로 623-1", "서울 강남구 도산대로 539", "서울 성북구 길음로13길 22", "서울 서초구 효령로 347", "서울 성동구 독서당로 328", "서울 강남구 도산대로 155", "서울 중구 퇴계로 447", "서울 마포구 월드컵북로 262", "서울 영등포구 경인로 832", "서울 강동구 올림픽로 793", "서울 성북구 성북로 66", "서울 강동구 천호대로 1199", "서울 강동구 구천면로 431", "서울 강동구 올림픽로 703", "서울 강동구 올림픽로 800", "서울 강동구 고덕로 101", "서울 강동구 구천면로 289", "서울 강동구 구천면로 446", "서울 강동구 상일로 13", "서울 강동구 구천면로 498-1", "서울 강동구 구천면로 237", "서울 강동구 양재대로 1385", "서울 강동구 양재대로 1532", "서울 강동구 상암로 64", "서울 강동구 구천면로 238", "서울 강동구 천호대로 1190", "서울 강동구 동남로73길 26", "서울 강동구 구천면로 322", "서울 강동구 구천면로 428", "서울 강동구 양재대로 1508", "서울 강동구 올림픽로 560", "서울 강동구 풍성로 145", "서울 강동구 고덕로 162", "서울 강동구 양재대로 1410", "서울 강동구 성안로 10", "서울 강동구 동남로81길 82", "서울 강동구 구천면로 664", "서울 강동구 아리수로 421", "서울 강동구 풍성로 197", "서울 강동구 양재대로 1588", "서울 강동구 천호대로 1057", "서울 마포구 월드컵로 147", "서울 강동구 천호대로 1120", "서울 강동구 양재대로 1571", "서울 은평구 진관2로 77", "서울 강동구 아리수로50길 50", "서울 강동구 양재대로 1376", "서울 강북구 노해로 65", "서울 마포구 월드컵북로 167", "서울 서대문구 가재울미래로 2", "서울 강남구 논현로 416", "서울 도봉구 마들로 664", "서울 은평구 증산로9길 26-23"];
+
+					// 지도 셋팅 위치 --> 근처 위치로 변경
+						var x=document.getElementById("demo");
+						   if (navigator.geolocation) {
+							  navigator.geolocation.getCurrentPosition(showPosition,showError);
+						   }
+						   else {
+							   x.innerHTML=" 이 브라우저는 geolocation을 지원하지 않습니다.";
+						   }
+
+						function showPosition(position) {
+							var lat = position.coords.latitude;
+							var lng = position.coords.longitude;
+							var latlng = { lat: position.coords.latitude, lng: position.coords.longitude }
+							var old;
+							var dom_map = document.getElementById("map");
+							  if(dom_map) {
+							   var map = new google.maps.Map(dom_map, {
+								  center: { lat: lat, lng: lng},
+									zoom: 14,
+										  });
+							var icon = {
+							url : '{% static "map/pointer.webp" %}',
+							scaledSize : new google.maps.Size(20, 30)
+							}
+							var loca_maker = new google.maps.Marker({
+							position: latlng,
+							map: map,
+							icon: icon});
+
+						  var marker = new Array(861);
+						  var  infowindow = new Array(861);
+							for(i=0; i<861; i++) {
+							  var latlng = {lat: latt[i], lng: lngg[i]}
+							  var contentString = hname[i] + "<br>" + "(" + address[i] + ")" ;
+							  var myinfowindow = new google.maps.InfoWindow({
+								  content: contentString
+							  });
+							  var marker = new google.maps.Marker({position: latlng, map: map, infowindow: myinfowindow});
+
+								marker.addListener('click', function() {      // 클릭 이벤트 발생 시 지도와 마커 출력
+								   if(old)
+									old.close();
+								   this.infowindow.open(map, this);
+								   old = this.infowindow;
+								});
+
+						}
+						};
+						}
+					function showError(error) {
+					   switch(error.code) {
+						  case error.PERMISSION_DENIED:
+							  x.innerHTML="사용자가 위치 기능 사용을 거부했습니다."
+							  break;
+
+						  case error.POSITION_UNAVAILABLE:
+							  x.innerHTML="위치를 구할 수 없습니다.";
+							  break;
+
+						  case error.TIMEOUT:
+							  x.innerHTML="사용자가 위치 기능 사용을 거부했습니다.";
+							  break;
+						  case error.UNKNOWN_ERROR:
+							  x.innerHTML="기타 에러";
+					   }
+					}
+				</script>
+			</div>
+		</div>
+	</section>
+
+	<section class="site-section" id="section-coment" style="margin-top:30px;">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md-12">
+					<div class="section-heading text-center">
+						<h2><strong>습득시 안내</strong></h2>
+						<strong class="d-block text-white text-uppercase letter-spacing">누군가의 반려동물을 보호하고 계신가요?</strong>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+
+					<div class="block-47 d-flex mb-5">
+						<div class="block-47-image">
+							<img src="{% static 'images/Jennifer.png' %}" alt="Image placeholder" class="img-fluid">
+						</div>
+						<blockquote class="block-47-quote">
+							<p>&ldquo;공공장소를 떠돌거나 버려진 동물을 발견한 경우 관할 시ㆍ군ㆍ구청과 해당 유기동물 보호시설에 신고해야 합니다.&rdquo;</p>
+<!--							<cite class="block-47-quote-author">&mdash; </cite>-->
+						</blockquote>
+					</div>
+
+				</div>
+				<div class="col-md-6">
+
+					<div class="block-47 d-flex mb-5">
+						<div class="block-47-image">
+							<img src="{% static 'images/Katrine.png' %}" alt="Image placeholder" class="img-fluid">
+						</div>
+						<blockquote class="block-47-quote">
+							<p>&ldquo;유기동물을 주인 없는 동물이라 여겨 마음대로 잡아서 팔거나 죽이면 2년 이하의 징역 또는 2천만원 이하의 벌금을 내게 됩니다.&rdquo;</p>
+<!--							<cite class="block-47-quote-author">&mdash; </cite>-->
+						</blockquote>
+					</div>
+
+				</div>
+
+				<div class="col-md-6">
+
+					<div class="block-47 d-flex mb-5">
+						<div class="block-47-image">
+							<img src="{% static 'images/Pets.png' %}" alt="Image placeholder" class="img-fluid">
+						</div>
+						<blockquote class="block-47-quote">
+							<p>&ldquo;시장ㆍ군수ㆍ구청장은 관내에서 발견된 유기동물이 보호받을 수 있도록 필요한 조치를 해야 하며, 주인을 찾을 수 있도록 그 사실을 7 일 이상 공고해야 합니다.&rdquo;</p>
+<!--							<cite class="block-47-quote-author">&mdash; </cite>-->
+						</blockquote>
+					</div>
+
+				</div>
+				<div class="col-md-6">
+
+					<div class="block-47 d-flex mb-5">
+						<div class="block-47-image">
+							<img src="{% static 'images/Woody.png' %}" alt="Image placeholder" class="img-fluid">
+						</div>
+						<blockquote class="block-47-quote">
+							<p>&ldquo;공고 후 10일이 지나도 주인을 찾지 못한 경우, 해당 시ㆍ군ㆍ구등이 동물의 소유권을 갖게 되어 개인에게 기증하거나 분양할 수 있습니다.&rdquo;</p>
+<!--							<cite class="block-47-quote-author">&mdash; </cite>-->
+						</blockquote>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<footer class="site-footer">
+		<div class="container">
+
+			<div class="row mb-5">
+				<p class="col-12 text-center">
+					Copyright &copy; <script>document.write(new Date().getFullYear());</script>
+					<img src="{% static 'images/stamp1.png' %}" style=" width:60px; height:60px;">
+				</p>
+			</div>
+			
+			<div class="row mb-5">
+				<div class="col-md-12 text-center">
+					<p>
+
+						이동규_<a href="#" class="social-item"><span class="icon-instagram2" onclick="location.href='https://www.instagram.com/dk_lee__/';"></span></a>
+						박성준_<a href="#" class="social-item"><span class="icon-instagram2" onclick="location.href='https://www.instagram.com/piaojian_0504/';"></span></a>
+						김민영_<a href="#" class="social-item"><span class="icon-instagram2" onclick="location.href='https://www.instagram.com/my_kim27/';"></span></a>
+						홍연하_<a href="#" class="social-item"><span class="icon-instagram2" onclick="location.href='https://www.instagram.com/yyeoona/';"></span></a>
+					</p>
+				</div>
+			</div>
+			
+		</div>
+	</footer>
+
+	<script src="{% static 'js/vendor/popper.min.js' %}"></script>
+	<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/vendor/jquery.min.js' %}"></script>
+	<script src="{% static 'js/vendor/jquery.easing.1.3.js' %}"></script>
+	<script src="{% static 'js/vendor/jquery.stellar.min.js' %}"></script>
+	<script src="{% static 'js/vendor/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+    </body>
+    </html>
